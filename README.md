@@ -29,6 +29,6 @@ Make a clear list of features that work/dont work
 | Employment | placeholder | placeholder | placeholder |
 
 ### Attack/Special/Support Descriptions
-| Ability    | Description |
-| :--------- | :---------- |
-| Employment | placeholder |
+| Ability     | Description |
+| :---------- | :---------- |
+| placeholder | placeholder |
