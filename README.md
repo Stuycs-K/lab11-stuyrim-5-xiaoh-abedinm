@@ -18,7 +18,7 @@ Make a clear list of features that work/dont work
 
 ## Adventurer Subclasses
 | Adventurer       | Attack      | Special     | Support     |
-| :--------------- | :---------: | :---------: | ----------: |
+| :--------------- | :---------: | :---------: | :---------- |
 | Art Major        | placeholder | placeholder | placeholder |
 | Cs Major         | placeholder | placeholder | placeholder |
 | Philosophy Major | placeholder | placeholder | placeholder |
