@@ -20,7 +20,7 @@ Make a clear list of features that work/dont work
 | Adventurer       | Attack            | Special            | Support   |
 | :--------------- | :---------------- | :----------------- | :-------- |
 | Art Major        | Throw Paint       | AI Replacement     | Die       |
-| Cs Major         | Forget Compiling  | McDonalds          | First Try |
+| Cs Major         | Code              | McDonalds          | First Try |
 | Philosophy Major | Yap               | Existential Crisis | Inspire   |
 
 ## Boss
@@ -29,6 +29,17 @@ Make a clear list of features that work/dont work
 | Employment | Interview   | Layoffs     | Rejection   |
 
 ### Attack/Special/Support Descriptions
-| Ability     | Description |
-| :---------- | :---------- |
-| placeholder | placeholder |
+| Ability                   | Description                                                           |
+| :------------------------ | :-------------------------------------------------------------------- |
+| Throw Paint               | Throws Paint.                                                         |
+| Code                      | Codes Aggressively.                                                   |
+| Yap                       | "What are you doing with your life?"                                  |
+| AI Replacement            | Uses AI to generate an attack.                                        |
+| McDonalds                 | Works a shift at McDonalds.                                           |
+| Existential Crisis        | "What am I doing with my life?"                                       |
+| Die                       | Dies while healing teammates, comes back alive after 4 turns.         |
+| First Try                 | Buffs themselves by creating working code first try.                  |
+| Inspire                   | "Do something with your life." Buffs teammates by inspiring them.     |
+| Interview                 | Forces an enemy to participate in an interview, dealing damage.       |
+| Layoffs                   | Layoffs all enemies, dealing damage.                                  |
+| Rejection                 | Sends rejections, buffing self-esteem and de-buffs enemies.           |
