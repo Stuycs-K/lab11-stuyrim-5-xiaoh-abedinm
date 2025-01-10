@@ -12,9 +12,19 @@ public class Game{
   //Display the borders of your screen that will not change.
   //Do not write over the blank areas where text will appear or parties will appear.
   public static void drawBackground(){
-    /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    //YOUR CODE HERE
-    /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+    for (int row = 1; row < 31; row++){
+      if (row == 1 || row == 30){
+        for (int c = 1; c < 81; c++){
+          Text.go(row, c);
+          System.out.println(Text.colorize(" ", Text.RED+Text.BACKGROUND));
+        }
+      }
+      /*
+      else{
+        Text.go(row, row);
+      }  
+        */
+    }
   }
 
   //Display a line of text starting at

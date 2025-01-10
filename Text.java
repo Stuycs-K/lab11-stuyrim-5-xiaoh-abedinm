@@ -1,3 +1,5 @@
+import javax.xml.crypto.KeySelector.Purpose;
+
 public class Text{
   /*Base colors*/
   public static final int BLACK = 30;
@@ -72,6 +74,9 @@ public class Text{
 
     go(4,30);
     System.out.print("right?");
+
+    go(5,30);
+    System.out.print(colorize(" ", RED+BACKGROUND));
 
     go(5,1);//put the terminal at the end of the output again before the program ends.
 
