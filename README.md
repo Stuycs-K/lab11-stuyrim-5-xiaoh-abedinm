@@ -16,10 +16,19 @@ Make a clear list of features that work/dont work
 :beetle: This is a bug that affects the game.
 
 
-## Adventurer Subclasses
+## Adventurers
 | Adventurer       | Attack      | Special     | Support     |
-| :--------------- | :---------: | :---------: | :---------- |
+| :--------------- | :---------- | :---------- | :---------- |
 | Art Major        | placeholder | placeholder | placeholder |
 | Cs Major         | placeholder | placeholder | placeholder |
 | Philosophy Major | placeholder | placeholder | placeholder |
 
+## Boss
+| Boss       | Attack      | Special     | Support     |
+| :--------- | :---------- | :---------- | :---------- |
+| Employment | placeholder | placeholder | placeholder |
+
+### Attack/Special/Support Descriptions
+| Ability    | Description |
+| :--------- | :---------- |
+| Employment | placeholder |
