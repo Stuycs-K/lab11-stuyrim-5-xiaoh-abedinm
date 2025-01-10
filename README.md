@@ -17,16 +17,16 @@ Make a clear list of features that work/dont work
 
 
 ## Adventurers
-| Adventurer       | Attack      | Special     | Support     |
-| :--------------- | :---------- | :---------- | :---------- |
-| Art Major        | placeholder | placeholder | placeholder |
-| Cs Major         | placeholder | placeholder | placeholder |
-| Philosophy Major | placeholder | placeholder | placeholder |
+| Adventurer       | Attack            | Special            | Support   |
+| :--------------- | :---------------- | :----------------- | :-------- |
+| Art Major        | Throw Paint       | AI Replacement     | Die       |
+| Cs Major         | Forget Compiling  | McDonalds          | First Try |
+| Philosophy Major | Yap               | Existential Crisis | Inspire   |
 
 ## Boss
 | Boss       | Attack      | Special     | Support     |
 | :--------- | :---------- | :---------- | :---------- |
-| Employment | placeholder | placeholder | placeholder |
+| Employment | Interview   | Layoffs     | Rejection   |
 
 ### Attack/Special/Support Descriptions
 | Ability     | Description |
