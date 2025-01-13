@@ -31,7 +31,8 @@ public class Game{
   //use this method in your other text drawing methods to make things simpler.
   public static void drawText(String s,int startRow, int startCol){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    //YOUR CODE HERE
+    Text.go(startRow, startCol);
+    System.out.print(s);
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
@@ -70,10 +71,19 @@ public class Game{
     * ***THIS ROW INTENTIONALLY LEFT BLANK***
     */
     public static void drawParty(ArrayList<Adventurer> party,int startRow){
+      int width = WIDTH / party.size();
+      for (int i = 0; i < party.size(); i++) {
+        Adventurer temp = party.get(i);
+        int startCol = i * width + 2;
 
-      /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-      Text.go(startRow, 1);
-      /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+        drawText(temp.getName(), startRow, startCol);
+
+        String hp = "HP: " + colorByPercent(temp.getHP(), temp.getmaxHP());
+        drawText(hp, startRow + 1, startCol);
+
+        String special = temp.getSpecialName() + ": " + temp.getSpecial();
+        drawText(special, startRow + 2, startCol);
+      }
     }
 
 
@@ -99,14 +109,17 @@ public class Game{
     drawBackground();
 
     //draw player party
+    ArrayList<Adventurer>party = new ArrayList<Adventurer>();
+    for (int i = 0; i < 3; i++) {
+      party.add(createRandomAdventurer());
+    }
+    drawParty(party, HEIGHT-5);
+    //draw enemy party
     ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
-    /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     for (int i = 0; i < 3; i++) {
       enemies.add(createRandomAdventurer());
     }
-    drawParty(enemies, 1);
-    //draw enemy party
-
+    drawParty(enemies, 2);
   }
 
   public static String userInput(Scanner in){
