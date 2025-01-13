@@ -94,7 +94,16 @@ public class Game{
     // under 25% : red
     // under 75% : yellow
     // otherwise : white
-    return output;
+    double hpPercent = (double) hp / maxHP;
+    if (hpPercent < 0.25) {
+      return(Text.colorize(output, Text.RED));
+    }
+    else if (hpPercent < 0.75) {
+      return(Text.colorize(output, Text.YELLOW));
+    }
+    else {
+      return(Text.colorize(output, Text.GREEN));
+    }
   }
 
 
