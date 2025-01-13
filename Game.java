@@ -12,19 +12,53 @@ public class Game{
   //Display the borders of your screen that will not change.
   //Do not write over the blank areas where text will appear or parties will appear.
   public static void drawBackground(){
-    for (int row = 1; row < 31; row++){
-      for (int c = 1; c < 81; c++){
+    for (int row = 1; row < 31; row++,){
+      if (row == 1){
+        Text.go(row, 1);
+        System.out.print(Text.colorize("╔", BORDER_COLOR+BORDER_BACKGROUND));
+      }
+      if (row == 30){
+          Text.go(row, 1);
+        System.out.print(Text.colorize("╚", BORDER_COLOR+BORDER_BACKGROUND));
+      }
+      if (row == 1){
+        Text.go(row, 80);
+        System.out.print(Text.colorize("╗", BORDER_COLOR+BORDER_BACKGROUND));
+      }
+      if (row == 30 && c == 80){
+        System.out.print(Text.colorize("╝", BORDER_COLOR+BORDER_BACKGROUND));
+      }
+    }
+  }
+
+/*
+      for (; c < 81; c++){
+        Text.go(row, c);
         if (row == 1 || row == 30){
-          Text.go(row, c);
           System.out.print(Text.colorize("═", BORDER_COLOR+BORDER_BACKGROUND));
         }
       }
+      if (c == 1 || c == 80){
         Text.go(row, 1);
         System.out.print(Text.colorize("║", BORDER_COLOR+BORDER_BACKGROUND));
         Text.go(row, 80);
         System.out.print(Text.colorize("║", BORDER_COLOR+BORDER_BACKGROUND));
       }
+        if (row == 1 && c == 1){
+          System.out.print(Text.colorize("╔", BORDER_COLOR+BORDER_BACKGROUND));
+        }
+        if (row == 30 && c == 1){
+          System.out.print(Text.colorize("╚", BORDER_COLOR+BORDER_BACKGROUND));
+        }
+        if (row == 1 && c == 30){
+          System.out.print(Text.colorize("╗", BORDER_COLOR+BORDER_BACKGROUND));
+        }
+        if (row == 30 && c == 30){
+          System.out.print(Text.colorize("╝", BORDER_COLOR+BORDER_BACKGROUND));
+        }
+      }
   }
+  */
 
   //Display a line of text starting at
   //(columns and rows start at 1 (not zero) in the terminal)
