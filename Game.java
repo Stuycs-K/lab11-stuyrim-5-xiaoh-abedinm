@@ -16,14 +16,14 @@ public class Game{
       for (int c = 1; c < 81; c++){
         if (row == 1 || row == 30){
           Text.go(row, c);
-          System.out.print(Text.colorize("-", BORDER_COLOR+BORDER_BACKGROUND));
+          System.out.print(Text.colorize("═", BORDER_COLOR+BORDER_BACKGROUND));
         }
       }
         Text.go(row, 1);
-        System.out.print(Text.colorize("|", BORDER_COLOR+BORDER_BACKGROUND));
+        System.out.print(Text.colorize("║", BORDER_COLOR+BORDER_BACKGROUND));
         Text.go(row, 80);
-        System.out.print(Text.colorize("|", BORDER_COLOR+BORDER_BACKGROUND));
-      }  
+        System.out.print(Text.colorize("║", BORDER_COLOR+BORDER_BACKGROUND));
+      }
   }
 
   //Display a line of text starting at
