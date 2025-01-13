@@ -128,7 +128,16 @@ public class Game{
     // under 25% : red
     // under 75% : yellow
     // otherwise : white
-    return output;
+    double hpPercent = (double) hp / maxHP;
+    if (hpPercent < 0.25) {
+      return(Text.colorize(output, Text.RED));
+    }
+    else if (hpPercent < 0.75) {
+      return(Text.colorize(output, Text.YELLOW));
+    }
+    else {
+      return(Text.colorize(output, Text.GREEN));
+    }
   }
 
 
@@ -158,13 +167,13 @@ public class Game{
 
   public static String userInput(Scanner in){
       //Move cursor to prompt location
-
+      Text.go(HEIGHT-1,2);
       //show cursor
-
+      Text.showCursor();
       String input = in.nextLine();
 
       //clear the text that was written
-
+      
       return input;
   }
 
