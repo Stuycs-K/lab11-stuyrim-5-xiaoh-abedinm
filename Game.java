@@ -133,13 +133,13 @@ public class Game{
 
   public static String userInput(Scanner in){
       //Move cursor to prompt location
-
+      Text.go(HEIGHT-1,2);
       //show cursor
-
+      Text.showCursor();
       String input = in.nextLine();
 
       //clear the text that was written
-
+      
       return input;
   }
 
