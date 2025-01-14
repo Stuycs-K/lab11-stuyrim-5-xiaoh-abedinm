@@ -38,35 +38,6 @@ public class Game{
     }
   }
 
-/*
-      for (; c < 81; c++){
-        Text.go(row, c);
-        if (row == 1 || row == 30){
-          System.out.print(Text.colorize("═", BORDER_COLOR+BORDER_BACKGROUND));
-        }
-      }
-      if (c == 1 || c == 80){
-        Text.go(row, 1);
-        System.out.print(Text.colorize("║", BORDER_COLOR+BORDER_BACKGROUND));
-        Text.go(row, 80);
-        System.out.print(Text.colorize("║", BORDER_COLOR+BORDER_BACKGROUND));
-      }
-        if (row == 1 && c == 1){
-          System.out.print(Text.colorize("╔", BORDER_COLOR+BORDER_BACKGROUND));
-        }
-        if (row == 30 && c == 1){
-          System.out.print(Text.colorize("╚", BORDER_COLOR+BORDER_BACKGROUND));
-        }
-        if (row == 1 && c == 30){
-          System.out.print(Text.colorize("╗", BORDER_COLOR+BORDER_BACKGROUND));
-        }
-        if (row == 30 && c == 30){
-          System.out.print(Text.colorize("╝", BORDER_COLOR+BORDER_BACKGROUND));
-        }
-      }
-  }
-  */
-
   //Display a line of text starting at
   //(columns and rows start at 1 (not zero) in the terminal)
   //use this method in your other text drawing methods to make things simpler.
@@ -88,9 +59,23 @@ public class Game{
   *@param height the number of rows
   */
   public static void TextBox(int row, int col, int width, int height, String text){
-    /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    //YOUR CODE HERE
-    /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+    String[] chars = text.split("");
+    int r = row;
+    int c = col;
+    int numCh = 0;
+
+    for (int i = 0; i < chars.length; i++, c++, numCh++){
+      while(height > 0){
+        if (col > 80 || numCh > width){
+          col = 1;
+          row++;
+          numCh = 0;
+          height--;
+        }
+        Text.go(r, c);
+        System.out.print(chars[i]);
+      }
+    }
   }
 
 
