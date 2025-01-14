@@ -158,13 +158,23 @@ public class Game{
   }
 
   public static String userInput(Scanner in){
+      int row = 29;
+      int col = 2;
       //Move cursor to prompt location
-      Text.go(HEIGHT-1,2);
+      Text.go(row,col);
+      System.out.print("Enter a command: ");
+
       //show cursor
       Text.showCursor();
       String input = in.nextLine();
 
       //clear the text that was written
+      Text.go(row,col);
+      for (int i = 0; i < 78; i++) {
+        System.out.print("");
+      }
+      Text.go(row,col);
+      Text.hideCursor();
 
       return input;
   }
