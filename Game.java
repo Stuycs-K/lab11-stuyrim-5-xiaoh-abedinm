@@ -14,7 +14,7 @@ public class Game{
   public static void drawBackground(){
     for (int row = 1; row < 31; row++){
       for (int c = 1; c < 81; c++){
-        if (row == 1 || row == 30){
+        if (row == 1 || row == 30 || row == 28){
           Text.go(row, c);
           System.out.print(Text.colorize("═", BORDER_COLOR+BORDER_BACKGROUND));
         }
