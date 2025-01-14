@@ -35,6 +35,18 @@ public class Game{
         Text.go(row, 80);
         System.out.print(Text.colorize("╝", BORDER_COLOR+BORDER_BACKGROUND));
       }
+      if (row == 5){
+        Text.go(row, 1);
+        System.out.print(Text.colorize("╠", BORDER_COLOR+BORDER_BACKGROUND));
+        Text.go(row, 80);
+        System.out.print(Text.colorize("╣", BORDER_COLOR+BORDER_BACKGROUND));
+      }
+      if (row == 28){
+        Text.go(row, 1);
+        System.out.print(Text.colorize("╠", BORDER_COLOR+BORDER_BACKGROUND));
+        Text.go(row, 80);
+        System.out.print(Text.colorize("╣", BORDER_COLOR+BORDER_BACKGROUND));
+      }
     }
   }
 
