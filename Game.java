@@ -12,20 +12,27 @@ public class Game{
   //Display the borders of your screen that will not change.
   //Do not write over the blank areas where text will appear or parties will appear.
   public static void drawBackground(){
-    for (int row = 1; row < 31; row++,){
+    for (int row = 1; row < 31; row++){
+      for (int c = 1; c < 81; c++){
+        if (row == 1 || row == 30){
+          Text.go(row, c);
+          System.out.print(Text.colorize("═", BORDER_COLOR+BORDER_BACKGROUND));
+        }
+        if (c == 1 || c == 80){
+          Text.go(row, c);
+          System.out.print(Text.colorize("║", BORDER_COLOR+BORDER_BACKGROUND));
+        }
+      }
       if (row == 1){
         Text.go(row, 1);
         System.out.print(Text.colorize("╔", BORDER_COLOR+BORDER_BACKGROUND));
-      }
-      if (row == 30){
-          Text.go(row, 1);
-        System.out.print(Text.colorize("╚", BORDER_COLOR+BORDER_BACKGROUND));
-      }
-      if (row == 1){
         Text.go(row, 80);
         System.out.print(Text.colorize("╗", BORDER_COLOR+BORDER_BACKGROUND));
       }
-      if (row == 30 && c == 80){
+      if (row == 30){
+        Text.go(row, 1);
+        System.out.print(Text.colorize("╚", BORDER_COLOR+BORDER_BACKGROUND));
+        Text.go(row, 80);
         System.out.print(Text.colorize("╝", BORDER_COLOR+BORDER_BACKGROUND));
       }
     }
