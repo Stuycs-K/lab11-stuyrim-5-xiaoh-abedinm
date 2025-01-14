@@ -203,9 +203,10 @@ public class Game{
   }
 
   public static void quit(){
+    Text.clear();
     Text.reset();
     Text.showCursor();
-    Text.go(32,1);
+    Text.go(1,1);
   }
 
   public static void run(){
