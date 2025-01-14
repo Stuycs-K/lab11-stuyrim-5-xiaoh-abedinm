@@ -26,7 +26,7 @@ Make a clear list of features that work/dont work
 ## Boss
 | Boss       | Attack      | Special     | Support     |
 | :--------- | :---------- | :---------- | :---------- |
-| Employment | Interview   | Layoffs     | Rejection   |
+| Boss       | Underpay    | Fire        | Degrade     |
 
 ### Attack/Special/Support Descriptions
 | Ability                   | Description                                                           |
@@ -40,6 +40,6 @@ Make a clear list of features that work/dont work
 | Die                       | Dies while healing teammates, comes back alive after 4 turns.         |
 | First Try                 | Buffs themselves by creating working code first try.                  |
 | Inspire                   | "Do something with your life." Buffs teammates by inspiring them.     |
-| Interview                 | Forces an enemy to participate in an interview, dealing damage.       |
-| Layoffs                   | Layoffs all enemies, dealing damage.                                  |
-| Rejection                 | Sends rejections, buffing self-esteem and de-buffs enemies.           |
+| Underpay                  | Forces an enemy to participate in an interview, dealing damage.       |
+| Fire                      | Layoffs all enemies, dealing damage.                                  |
+| Degrade                   | Sends rejections, buffing self-esteem and de-buffs enemies.           |

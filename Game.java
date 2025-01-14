@@ -67,8 +67,8 @@ public class Game{
     for (int i = 0; i < chars.length; i++, c++, numCh++){
       while(height > 0){
         if (col > 80 || numCh > width){
-          col = 1;
-          row++;
+          c = col;
+          r++;
           numCh = 0;
           height--;
         }
@@ -165,7 +165,7 @@ public class Game{
       String input = in.nextLine();
 
       //clear the text that was written
-      
+
       return input;
   }
 
