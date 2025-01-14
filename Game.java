@@ -64,6 +64,13 @@ public class Game{
     int c = col;
     int numCh = 0;
 
+    for (int i = row; i < row + height; i++) {
+      Text.go(i, col);
+      for (int j = 0; j < width; j++) {
+        System.out.print(" ");
+      }
+    }
+
     for (int i = 0; i < chars.length; i++, c++, numCh++){
       while(height > 0){
         if (col > 80 || numCh > width){
@@ -171,7 +178,7 @@ public class Game{
       //clear the text that was written
       Text.go(row,col);
       for (int i = 0; i < 78; i++) {
-        System.out.print("");
+        System.out.print(" ");
       }
       Text.go(row,col);
       Text.hideCursor();
