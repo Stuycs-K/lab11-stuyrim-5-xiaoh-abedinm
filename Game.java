@@ -71,16 +71,20 @@ public class Game{
       }
     }
 
-    for (int i = 0; i < chars.length; i++, c++, numCh++){
-      while(height > 0){
-        if (col > 80 || numCh > width){
+    for (int i = 0; i < chars.length; i++){
+      if (height > 0) {
+        if (numCh == width){
           c = col;
           r++;
           numCh = 0;
           height--;
         }
-        Text.go(r, c);
-        System.out.print(chars[i]);
+        if (i < chars.length && height > 0) {
+          Text.go(r, c);
+          System.out.print(chars[i]);
+          c++;
+          numCh++;
+        }
       }
     }
   }
