@@ -250,9 +250,8 @@ public class Game{
 
         //Process user input for the last Adventurer:
         if(input.startsWith("attack") || input.startsWith("a")){
-          /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-          //YOUR CODE HERE
-          /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+          Adventurer target = enemies.get(whichOpponent);
+          TextBox(24,2,78,1, party.get(whichPlayer).attack(target));
         }
         else if(input.startsWith("special") || input.startsWith("sp")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
