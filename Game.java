@@ -185,7 +185,6 @@ public class Game{
       int col = 2;
       //Move cursor to prompt location
       Text.go(row,col);
-      System.out.print("Enter a command: ");
 
       //show cursor
       Text.showCursor();
@@ -247,12 +246,13 @@ public class Game{
     drawScreen();//initial state.
 
     //Main loop
+    String preprompt = "Enter command for "+party.get(whichPlayer)+" (attack/special/quit):";
 
     //display this prompt at the start of the game.
-    String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       //Read user input//YOUR CODE HERE
+      int inputCol = preprompt.length();
       input = userInput(in);
 
       //example debug statment
