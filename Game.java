@@ -156,21 +156,15 @@ public class Game{
   //Display the party and enemies
   //Do not write over the blank areas where text will appear.
   //Place the cursor at the place where the user will by typing their input at the end of this method.
-  public static void drawScreen(){
+  public static void drawScreen(ArrayList<Adventurer> party, ArrayList<Adventurer> enemies){
 
     drawBackground();
 
     //draw player party
-    ArrayList<Adventurer>party = new ArrayList<Adventurer>();
-    for (int i = 0; i < 3; i++) {
-      party.add(createRandomAdventurer());
-    }
+
     drawParty(party, HEIGHT-5);
     //draw enemy party
-    ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
-    for (int i = 0; i < 3; i++) {
-      enemies.add(createRandomAdventurer());
-    }
+
     drawParty(enemies, 2);
   }
 
@@ -237,20 +231,20 @@ public class Game{
     //Draw the window border
 
     //You can add parameters to draw screen!
-    drawScreen();//initial state.
+    drawScreen(party, enemies);//initial state.
 
     //Main loop
     String preprompt = "Enter command for "+party.get(whichPlayer)+" (attack/special/quit):";
 
     //display this prompt at the start of the game.
 
+
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       //Read user input//YOUR CODE HERE
-      int inputCol = preprompt.length();
       input = userInput(in);
 
       //example debug statment
-      TextBox(24,2,1,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
+      // TextBox(24,2,1,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
 
       //display event based on last turn's input
       if(partyTurn){
@@ -324,7 +318,7 @@ public class Game{
       }
 
       //display the updated screen after input has been processed.
-      drawScreen();
+      drawScreen(party, enemies);
 
 
     }//end of main game loop
