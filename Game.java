@@ -84,12 +84,10 @@ public class Game{
     }
 
     for (int i = 0; i < chars.length; i++){
-      if (height > 0) {
         if (numCh == width){
           c = col;
           r++;
           numCh = 0;
-          height--;
         }
         if (i < chars.length && height > 0) {
           Text.go(r, c);
@@ -97,7 +95,9 @@ public class Game{
           c++;
           numCh++;
         }
-      }
+        if (r >= row + height) {
+          return;
+        }
     }
   }
 
@@ -264,7 +264,8 @@ public class Game{
         //Process user input for the last Adventurer:
         if(input.startsWith("attack") || input.startsWith("a")){
           Adventurer target = enemies.get(whichOpponent);
-          TextBox(24,2,78,1, party.get(whichPlayer).attack(target));
+          Adventurer attacker = party.get(whichPlayer);
+          TextBox(6, 2, 78,  3, attacker.attack(target));
         }
         else if(input.startsWith("special") || input.startsWith("sp")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
