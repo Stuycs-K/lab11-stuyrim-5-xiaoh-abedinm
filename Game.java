@@ -256,16 +256,16 @@ public class Game{
           TextBox(6, 2, 78,  3, attacker.attack(target));
         }
         else if(input.startsWith("special") || input.startsWith("sp")){
-          /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-          //YOUR CODE HERE
-          /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+          Adventurer target = enemies.get(whichOpponent);
+          Adventurer attacker = party.get(whichPlayer);
+          TextBox(6, 2, 78,  3, attacker.specialAttack(target));
         }
         else if(input.startsWith("su ") || input.startsWith("support ")){
-          //"support 0" or "su 0" or "su 2" etc.
-          //assume the value that follows su  is an integer.
-          /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-          //YOUR CODE HERE
-          /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+          String[] temp = input.split(" ");
+          int num = Integer.valueOf(temp[1]);
+          Adventurer target = party.get(num);
+          Adventurer attacker = party.get(whichPlayer);
+          TextBox(6, 2, 78,  3, attacker.support(target));
         }
 
         //You should decide when you want to re-ask for user input
