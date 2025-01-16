@@ -168,9 +168,9 @@ public class Game{
     drawParty(enemies, 2);
   }
 
-  public static String userInput(Scanner in){
+  public static String userInput(Scanner in, int start){
       int row = 29;
-      int col = 2;
+      int col = 2 + start;
       //Move cursor to prompt location
       Text.go(row,col);
 
@@ -234,14 +234,15 @@ public class Game{
     drawScreen(party, enemies);//initial state.
 
     //Main loop
-    String preprompt = "Enter command for "+party.get(whichPlayer)+" (attack/special/quit):";
 
     //display this prompt at the start of the game.
 
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       //Read user input//YOUR CODE HERE
-      input = userInput(in);
+      String preprompt = "Enter command for " + party.get(whichPlayer).getName() + " (attack/special/quit):";
+      TextBox(29, 2, 76, 1, preprompt);
+      input = userInput(in, preprompt.length());
 
       //example debug statment
       // TextBox(24,2,1,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
