@@ -273,49 +273,34 @@ public class Game{
         //If no errors:
         whichPlayer++;
 
-
         if(whichPlayer < party.size()){
           //This is a player turn.
           //Decide where to draw the following prompt:
           String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
-
-
+          TextBox(29, 2, 76, 1, prompt);
         }else{
           //This is after the player's turn, and allows the user to see the enemy turn
           //Decide where to draw the following prompt:
           String prompt = "press enter to see monster's turn";
-
+          TextBox(29, 2, 76, 1, prompt);
           partyTurn = false;
           whichOpponent = 0;
         }
         //done with one party member
       }else{
-        //not the party turn!
-
-
-        //enemy attacks a randomly chosen person with a randomly chosen attack.z`
-        //Enemy action choices go here!
-        /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-        //YOUR CODE HERE
-        /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-
-
-        //Decide where to draw the following prompt:
-        String prompt = "press enter to see next turn";
+        Adventurer attacker = enemies.get(whichOpponent);
+        Adventurer target = party.get((int)(Math.random()*party.size()));
+        TextBox(6, 3, 78, 3, attacker.attack(target));
 
         whichOpponent++;
 
-      }//end of one enemy.
-
-      //modify this if statement.
-      if(!partyTurn && whichOpponent >= enemies.size()){
-        //THIS BLOCK IS TO END THE ENEMY TURN
-        //It only triggers after the last enemy goes.
-        whichPlayer = 0;
-        turn++;
-        partyTurn=true;
-        //display this prompt before player's turn
-        String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+        if(whichOpponent >= enemies.size()){
+          whichPlayer = 0;
+          turn++;
+          partyTurn=true;
+          String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+          TextBox(29,2,76,1,prompt);
+        }
       }
 
       //display the updated screen after input has been processed.
