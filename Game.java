@@ -258,6 +258,9 @@ public class Game{
           Adventurer target = enemies.get(whichOpponent);
           Adventurer attacker = party.get(whichPlayer);
           TextBox(6, 2, 78,  3, attacker.attack(target));
+          if (target.getHP() <= 0){
+            enemies.remove(target);
+          }
         }
         else if(input.startsWith("special") || input.startsWith("sp")){
           Adventurer target = enemies.get(whichOpponent);
