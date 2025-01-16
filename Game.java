@@ -239,6 +239,9 @@ public class Game{
 
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
+      if (whichPlayer >= party.size()) {
+        whichPlayer = 0;
+      }
       //Read user input//YOUR CODE HERE
       String preprompt = "Enter command for " + party.get(whichPlayer).getName() + " (attack/special/quit):";
       TextBox(29, 2, 76, 1, preprompt);
