@@ -149,6 +149,9 @@ public class Game{
     }
   }
 
+  public static Boolean isDead(Adventurer adventurer){
+    return (adventurer.getHP() <= 0); 
+  }
 
 
 
@@ -237,14 +240,14 @@ public class Game{
 
     //display this prompt at the start of the game.
 
+    String preprompt = "Enter command for " + party.get(whichPlayer).getName() + " (attack/special/quit):";
+    TextBox(29, 2, 76, 1, preprompt);
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       if (whichPlayer >= party.size()) {
         whichPlayer = 0;
       }
       //Read user input//YOUR CODE HERE
-      String preprompt = "Enter command for " + party.get(whichPlayer).getName() + " (attack/special/quit):";
-      TextBox(29, 2, 76, 1, preprompt);
       input = userInput(in, preprompt.length());
 
       //example debug statment
@@ -258,9 +261,6 @@ public class Game{
           Adventurer target = enemies.get(whichOpponent);
           Adventurer attacker = party.get(whichPlayer);
           TextBox(6, 2, 78,  3, attacker.attack(target));
-          if (target.getHP() <= 0){
-            enemies.remove(target);
-          }
         }
         else if(input.startsWith("special") || input.startsWith("sp")){
           Adventurer target = enemies.get(whichOpponent);
@@ -303,12 +303,12 @@ public class Game{
         if(whichOpponent >= enemies.size()){
           whichPlayer = 0;
           turn++;
+          whichOpponent=0;
           partyTurn=true;
           String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
           TextBox(29,2,76,1,prompt);
         }
       }
-
       //display the updated screen after input has been processed.
       drawScreen(party, enemies);
 
