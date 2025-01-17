@@ -43,7 +43,7 @@ public class Boss extends Adventurer{
     other.applyDamage(damage);
     restoreSpecial(2);
     return this + " underpays "+ other + " and dealt "+ damage +
-    " points of damage. " + other " cannot afford dinner :(";
+    " points of damage. " + other " cannot afford dinner.";
   }
 
   //hurt or hinder the target adventurer
@@ -58,8 +58,15 @@ public class Boss extends Adventurer{
     " points. ";
   }
 
-  //hurt or hinder the target adventurer, consume some special resource
-  public abstract String specialAttack(Adventurer other){
-
-  };
+  public String specialAttack(Adventurer other){
+    if(getSpecial() >= 8){
+      setSpecial(getSpecial()-8);
+      int damage = (int)(Math.random()*5+Math.random()*5)+3;
+      other.applyDamage(damage);
+      //HAVE TO CHANGE DESCRIPTIONS
+      return this + ": "+ other+ ", You're fired."
+      " This glitched out "+other+" dealing "+ damage +" points of damage.";
+    }else{
+      return "Not enough rage to fire people. Instead, "+attack(other);
+    }
 }

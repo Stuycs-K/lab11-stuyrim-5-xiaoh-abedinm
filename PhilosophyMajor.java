@@ -1,26 +1,24 @@
-public class CSMajor extends Adventurer{
-  int caffeine, caffeineMax;
-  String preferredLanguage;
+public class PhilosophyMajor extends Adventurer{
+  int voice, voice;
+
+  String[] quotes = new String[]{“It is not the man who has too little, but the man who craves more, that is poor.”};
 
   /*the other constructors ultimately call the constructor
   *with all parameters.*/
-  public CSMajor(String name, int hp, String language){
+  public PhilosophyMajor(String name, int hp, String language){
     super(name,hp);
     caffeineMax = 12;
     caffeine = caffeineMax/2;
     preferredLanguage = language;
   }
 
-  public CSMajor(String name, int hp){
-    this(name,hp,"c++");
-  }
 
-  public CSMajor(String name){
+  public PhilosophyMajor(String name){
     this(name,24);
   }
 
-  public CSMajor(){
-    this("Carmack");
+  public PhilosophyMajor(){
+    this("Aristotle");
   }
 
   /*The next 8 methods are all required because they are abstract:*/
