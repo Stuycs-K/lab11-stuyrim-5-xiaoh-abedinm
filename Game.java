@@ -107,10 +107,20 @@ public class Game{
     * ***THIS ROW INTENTIONALLY LEFT BLANK***
     */
     public static void drawParty(ArrayList<Adventurer> party,int startRow){
+      if (party.isEmpty()) {
+        return;
+      }
       int width = WIDTH / party.size();
       for (int i = 0; i < party.size(); i++) {
         Adventurer temp = party.get(i);
         int startCol = i * width + 2;
+
+        for (int row = startRow; row < startRow + 3; row++) {
+          Text.go(row, startCol);
+          for (int repeat = 0; repeat < width; repeat++) {
+            System.out.print(" ");
+          }
+        }
 
         drawText(temp.getName(), startRow, startCol);
 
@@ -146,22 +156,21 @@ public class Game{
     return (adventurer.getHP() <= 0); 
   }
 
-
-
-
-  //Display the party and enemies
-  //Do not write over the blank areas where text will appear.
-  //Place the cursor at the place where the user will by typing their input at the end of this method.
+  public static void removeDeadAdventurers(ArrayList<Adventurer> adventurers) {
+    for (int i = 0; i < adventurers.size(); i++) {
+      if (isDead(adventurers.get(i))) {
+        adventurers.remove(i);
+        i--;
+      }
+    }
+  }
   public static void drawScreen(ArrayList<Adventurer> party, ArrayList<Adventurer> enemies){
-
-    drawBackground();
-
-    //draw player party
+    removeDeadAdventurers(enemies);
+    removeDeadAdventurers(party);
 
     drawParty(party, HEIGHT-5);
-    //draw enemy party
-
     drawParty(enemies, 2);
+    drawBackground();
   }
 
   public static String userInput(Scanner in, int start){
@@ -196,7 +205,6 @@ public class Game{
     //Clear and initialize
     Text.hideCursor();
     Text.clear();
-
 
     //Things to attack:
     //Make an ArrayList of Adventurers and add 1-3 enemies to it.
@@ -301,6 +309,17 @@ public class Game{
           String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
           TextBox(29,2,76,1,prompt);
         }
+      }
+
+      removeDeadAdventurers(enemies);
+      removeDeadAdventurers(party);
+
+      if (party.isEmpty()) {
+        TextBox(30, 1, 80, 1, "You Lose! All party members are dead.");
+        return;
+      } else if (enemies.isEmpty()) {
+        TextBox(30, 1,80, 1, "You Win! All enemies are defeated.");
+        return;
       }
       //display the updated screen after input has been processed.
       drawScreen(party, enemies);
