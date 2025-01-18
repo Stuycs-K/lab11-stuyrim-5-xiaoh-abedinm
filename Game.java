@@ -65,33 +65,26 @@ public class Game{
   *@param height the number of rows
   */
   public static void TextBox(int row, int col, int width, int height, String text){
-    String[] chars = text.split("");
+    String[] words = text.split(" ");
     int r = row;
     int c = col;
-    int numCh = 0;
 
-    for (int i = row; i < row + height; i++) {
-      Text.go(i, col);
-      for (int j = 0; j < width; j++) {
-        System.out.print(" ");
-      }
+    for (int i = 0; i < height; i++) {
+      Text.go(row + i, col);
+      System.out.print(" ".repeat(width));
     }
 
-    for (int i = 0; i < chars.length; i++){
-        if (numCh == width){
-          c = col;
-          r++;
-          numCh = 0;
-        }
-        if (i < chars.length && height > 0) {
-          Text.go(r, c);
-          System.out.print(chars[i]);
-          c++;
-          numCh++;
-        }
-        if (r >= row + height) {
-          return;
-        }
+    for (String word : words) {
+      if (c + word.length() > col + width) {
+        r++;
+        c = col;
+      }
+      if (r >= row + height) {
+        return;
+      }
+        Text.go(r, c);
+        System.out.print(word + " ");
+        c += word.length() + 1;
     }
   }
 
