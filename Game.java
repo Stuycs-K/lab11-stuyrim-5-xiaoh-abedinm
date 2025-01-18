@@ -258,24 +258,37 @@ public class Game{
       if(partyTurn){
 
         //Process user input for the last Adventurer:
-        if(input.startsWith("attack") || input.startsWith("a")){
-          Adventurer target = enemies.get(whichOpponent);
+        if(input.startsWith("attack ") || input.startsWith("a ")){
+          String[] temp = input.split(" ");
+          int num = Integer.valueOf(temp[1])-1;
+          Adventurer target = enemies.get(num);
           Adventurer attacker = party.get(whichPlayer);
           TextBox(6, 2, 78,  3, attacker.attack(target));
         }
-        else if(input.startsWith("special") || input.startsWith("sp")){
-          Adventurer target = enemies.get(whichOpponent);
+        else if(input.startsWith("special ") || input.startsWith("sp ")){
+          String[] temp = input.split(" ");
+          int num = Integer.valueOf(temp[1])-1;
+          Adventurer target = enemies.get(num);
           Adventurer attacker = party.get(whichPlayer);
           TextBox(6, 2, 78,  3, attacker.specialAttack(target));
         }
         else if(input.startsWith("su ") || input.startsWith("support ")){
           String[] temp = input.split(" ");
-          int num = Integer.valueOf(temp[1]);
+          int num = Integer.valueOf(temp[1])-1;
           Adventurer target = party.get(num);
           Adventurer attacker = party.get(whichPlayer);
           TextBox(6, 2, 78,  3, attacker.support(target));
         }
-
+        else if(input.startsWith("attack") || input.startsWith("a")){
+          Adventurer target = enemies.get((int)(Math.random()*enemies.size()));
+          Adventurer attacker = party.get(whichPlayer);
+          TextBox(6, 2, 78,  3, attacker.attack(target));
+        }
+        else if(input.startsWith("special") || input.startsWith("sp")){
+          Adventurer target = enemies.get((int)(Math.random()*enemies.size()));
+          Adventurer attacker = party.get(whichPlayer);
+          TextBox(6, 2, 78,  3, attacker.specialAttack(target));
+        }
         //You should decide when you want to re-ask for user input
         //If no errors:
         whichPlayer++;
