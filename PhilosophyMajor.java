@@ -1,5 +1,5 @@
 public class PhilosophyMajor extends Adventurer{
-  int voice, voiceMax;
+  int purpose, purposeMax;
 
   String[] quotes = new String[]{""};
 
@@ -7,8 +7,8 @@ public class PhilosophyMajor extends Adventurer{
   *with all parameters.*/
   public PhilosophyMajor(String name, int hp, String language){
     super(name,hp);
-    voiceMax = 12;
-    voice = voiceMax/2;
+    purposeMax = 12;
+    purpose = purposeMax/2;
   }
 
 
@@ -22,19 +22,19 @@ public class PhilosophyMajor extends Adventurer{
 
   /*The next 8 methods are all required because they are abstract:*/
   public String getSpecialName(){
-    return "voice";
+    return "purpose";
   }
 
   public int getSpecial(){
-    return voice;
+    return purpose;
   }
 
   public void setSpecial(int n){
-    voice = n;
+    purpose = n;
   }
 
   public int getSpecialMax(){
-    return voiceMax;
+    return purposeMax;
   }
 
   /*Deal 2-7 damage to opponent, restores 2 caffeine*/
@@ -51,7 +51,7 @@ public class PhilosophyMajor extends Adventurer{
   public String specialAttack(Adventurer other){
     if(getSpecial() >= 8){
       setSpecial(getSpecial()-8);
-      int damage = (int)(Math.random()*5+Math.random()*5)+3;
+      int damage = (int)(Math.random()*5+Math.random()*3)+3;
       other.applyDamage(damage);
       return this + " sends "+other+
       " into an existential crisis. "+
@@ -61,12 +61,11 @@ public class PhilosophyMajor extends Adventurer{
     }
 
   }
-  /*Restores 5 special to other*/
 
   // ***NEED TO SOMEHOW BUFF TEAMMATES ON THEIR NEXT TURN**
   public String support(Adventurer other){
     int buff = (int)(Math.random()*5)+2;
-    return "'No one saves us but ourselves.' Inspires and buffs teammates on their next turn. ";
+    return "'No one saves us but ourselves.' Inspires and buffs "+ other +" on their next turn. ";
   }
   /*Restores 6 special and 1 hp to self.*/
   public String support(){

@@ -15,6 +15,11 @@ Make a clear list of features that work/dont work
 
 :beetle: This is a bug that affects the game.
 
+:x: Making enemy skip a turn
+
+:x: Buffing a teammate
+
+
 
 ## Adventurers
 | Adventurer       | Attack            | Special            | Support   |
