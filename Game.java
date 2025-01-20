@@ -418,7 +418,7 @@ public class Game{
         if(whichPlayer < party.size()){
           //This is a player turn.
           //Decide where to draw the following prompt:
-          //String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+          preprompt = "Enter command for " + party.get(whichPlayer).getName() + " (attack/special/quit): ";
           TextBox(29, 2, 77, 1, preprompt);
         }else{
           //This is after the player's turn, and allows the user to see the enemy turn
