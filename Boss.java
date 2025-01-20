@@ -3,12 +3,12 @@ public class Boss extends Adventurer{
 
   public Boss(String name, int hp){
     super(name,hp);
-    rageMax = 12;
+    rageMax = 14;
     rage = rageMax/2;
   }
 
   public Boss(String name){
-    this(name,24);
+    this(name,50);
   }
 
   public Boss(){
@@ -45,7 +45,7 @@ public class Boss extends Adventurer{
   //hurt or hinder the target adventurer
   //heal or buff the target adventurer
   public String support(Adventurer other){
-    int heal = (int)(Math.random()*3)+1;
+    int heal = (int)(Math.random()*5)+1;
     other.setHP(other.getHP() + heal);
     return this + " granted " + other + " a raise and PTO. " + other + " heals by " + 
     heal + "hp.";
@@ -53,7 +53,7 @@ public class Boss extends Adventurer{
 
   //heal or buff self
   public String support(){
-    int heal = (int)(Math.random()*5)+2;
+    int heal = (int)(Math.random()*6)+2;
     this.setHP(this.getHP() + heal);
     return this + " degrades another and increases self esteem (hp) by "+ heal +
     " points. ";
@@ -62,7 +62,7 @@ public class Boss extends Adventurer{
   public String specialAttack(Adventurer other){
     if(getSpecial() >= 8){
       setSpecial(getSpecial()-8);
-      int damage = (int)(Math.random()*5+Math.random()*5)+3;
+      int damage = (int)(Math.random()*5+Math.random()*7)+3;
       other.applyDamage(damage);
       return this + " fired "+ other + ", dealing "+ damage +" points of damage.";
     }else{
