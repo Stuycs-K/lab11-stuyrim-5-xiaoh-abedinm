@@ -41,37 +41,37 @@ public class PhilosophyMajor extends Adventurer{
   public String attack(Adventurer other){
     int damage = (int)(Math.random()*6)+2;
     other.applyDamage(damage);
-    restoreSpecial(2);
-    return this + " attacked "+ other + " and dealt "+ damage +
-    " points of damage. They then take a sip of their coffee.";
+    restoreSpecial(1);
+    return this + " wastes "+ other + "'s time to talk about nonsense, dealing "+ damage +
+    " points of damage.";
   }
 
-  /*Deal 3-12 damage to opponent, only if caffeine is high enough.
-  *Reduces caffeine by 8.
+  /*Need to make opponent skip a turn
   */
   public String specialAttack(Adventurer other){
     if(getSpecial() >= 8){
       setSpecial(getSpecial()-8);
       int damage = (int)(Math.random()*5+Math.random()*5)+3;
       other.applyDamage(damage);
-      return this + " used their "+preferredLanguage+
-      " skills to hack the matrix. "+
-      " This glitched out "+other+" dealing "+ damage +" points of damage.";
+      return this + " sends "+other+
+      " into an existential crisis. "+
+      " This paralyzes "+other+" for 1 turn and does "+ damage +" points of damage.";
     }else{
-      return "Not enough caffeine to use the ultimate code. Instead "+attack(other);
+      return this + "is currently wallowing in their own existential dread. Instead "+attack(other);
     }
 
   }
   /*Restores 5 special to other*/
+
+  // ***NEED TO SOMEHOW BUFF TEAMMATES ON THEIR NEXT TURN**
   public String support(Adventurer other){
-    return "Gives a coffee to "+other+" and restores "
-    + other.restoreSpecial(5)+" "+other.getSpecialName();
+    int buff = (int)(Math.random()*5)+2;
+    return "'No one saves us but ourselves.' Inspires and buffs teammates on their next turn. ";
   }
   /*Restores 6 special and 1 hp to self.*/
   public String support(){
-    int hp = 1;
+    int hp = 4;
     setHP(getHP()+hp);
-    return this+" drinks a coffee to restores "+restoreSpecial(6)+" "
-    + getSpecialName()+ " and "+hp+" HP";
+    return this+" stops wallowing in existential dread for a moment. Heals self for "+hp + "hp";
   }
 }

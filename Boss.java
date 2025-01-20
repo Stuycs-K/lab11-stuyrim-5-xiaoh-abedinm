@@ -25,7 +25,7 @@ public class Boss extends Adventurer{
   }
 
   public void setSpecial(int n){
-    
+
     rage = n;
   }
 
@@ -53,7 +53,7 @@ public class Boss extends Adventurer{
 
   //heal or buff self
   public String support(){
-    int heal = (int)(Math.random()*4)+2;
+    int heal = (int)(Math.random()*5)+2;
     this.setHP(this.getHP() + heal);
     return this + " degrades another and increases self esteem (hp) by "+ heal +
     " points. ";

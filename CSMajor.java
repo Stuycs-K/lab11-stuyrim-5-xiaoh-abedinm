@@ -12,7 +12,7 @@ public class CSMajor extends Adventurer{
   }
 
   public CSMajor(String name, int hp){
-    this(name,hp,"c++");
+    this(name,hp,"C#");
   }
 
   public CSMajor(String name){
@@ -44,7 +44,6 @@ public class CSMajor extends Adventurer{
   public String attack(Adventurer other){
     int damage = (int)(Math.random()*6)+2;
     other.applyDamage(damage);
-    restoreSpecial(2);
     return this + " attacked "+ other + " and dealt "+ damage +
     " points of damage. They then take a sip of their coffee.";
   }
@@ -53,13 +52,21 @@ public class CSMajor extends Adventurer{
   *Reduces caffeine by 8.
   */
   public String specialAttack(Adventurer other){
-    if(getSpecial() >= 8){
+    if(getSpecial() >= 10){
       setSpecial(getSpecial()-8);
-      int damage = (int)(Math.random()*5+Math.random()*5)+3;
+      int damage = (int)(Math.random()*5+Math.random()*3)+3;
       other.applyDamage(damage);
+
+      int steal = (int)(Math.random()*10)+3;
+      if (steal > other.getSpecial()){
+        steal = other.getSpecial();
+      }
+      setSpecial(getSpecial()+steal);
+      other.setSpecial(other.getSpecial() - steal);
+
       return this + " used their "+preferredLanguage+
-      " skills to hack the matrix. "+
-      " This glitched out "+other+" dealing "+ damage +" points of damage.";
+      " skills to hack "+ other + "'s mind. Transferred "+steal+ " " + other.getSpecialName()+
+      " to themselves and dealt "+ damage +" points of damage.";
     }else{
       return "Not enough caffeine to use the ultimate code. Instead "+attack(other);
     }
@@ -67,14 +74,14 @@ public class CSMajor extends Adventurer{
   }
   /*Restores 5 special to other*/
   public String support(Adventurer other){
-    return "Gives a coffee to "+other+" and restores "
-    + other.restoreSpecial(5)+" "+other.getSpecialName();
+    return this + "chugged a coffee and worked a shift at McDonalds. Used wages to donate "
+    + other.restoreSpecial(5)+" "+other.getSpecialName() + " to " + other;
   }
   /*Restores 6 special and 1 hp to self.*/
   public String support(){
     int hp = 1;
     setHP(getHP()+hp);
-    return this+" drinks a coffee to restores "+restoreSpecial(6)+" "
+    return this+" drinks a coffee to restores "+restoreSpecial(3)+" "
     + getSpecialName()+ " and "+hp+" HP";
   }
 }
