@@ -4,6 +4,8 @@ public class Game{
   private static final int HEIGHT = 30;
   private static final int BORDER_COLOR = Text.BLACK;
   private static final int BORDER_BACKGROUND = Text.WHITE + Text.BACKGROUND;
+  private static final int HISTORY_SIZE = 6;
+  private static LinkedList<String> turnHistory = new LinkedList<String>();
 
   public static void main(String[] args) {
     run();
@@ -52,6 +54,20 @@ public class Game{
     Text.go(startRow, startCol);
     System.out.print(s);
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+  }
+
+  public static void addTurnMessage(String text) {
+    if (turnHistory.size() >= HISTORY_SIZE) {
+      turnHistory.removeLast();
+    }
+    turnHistory.addFirst(text);
+  }
+
+  public static void drawTurnHistory() {
+    int startRow = 6;
+    for (int i = 0; i < turnHistory.size();i++) {
+      TextBox(startRow+i*3, 2, 78, 3, turnHistory.get(i));
+    }
   }
 
   /*Use this method to place text on the screen at a particular location.
@@ -262,7 +278,9 @@ public class Game{
             int num = Integer.valueOf(temp[1])-1;
             Adventurer target = enemies.get(num);
             Adventurer attacker = party.get(whichPlayer);
-            TextBox(6, 2, 78,  3, attacker.attack(target));
+            String result = attacker.attack(target);
+            addTurnMessage(result);
+            TextBox(6, 2, 78,  3, result);
             validInput = true;
           }
           else if(input.startsWith("special ") || input.startsWith("sp ")){
@@ -270,7 +288,9 @@ public class Game{
             int num = Integer.valueOf(temp[1])-1;
             Adventurer target = enemies.get(num);
             Adventurer attacker = party.get(whichPlayer);
-            TextBox(6, 2, 78,  3, attacker.specialAttack(target));
+            String result = attacker.specialAttack(target);
+            addTurnMessage(result);
+            TextBox(6, 2, 78,  3, result);
             validInput = true;
           }
           else if(input.startsWith("su ") || input.startsWith("support ")){
@@ -278,19 +298,25 @@ public class Game{
             int num = Integer.valueOf(temp[1])-1;
             Adventurer target = party.get(num);
             Adventurer attacker = party.get(whichPlayer);
-            TextBox(6, 2, 78,  3, attacker.support(target));
+            String result = attacker.support(target);
+            addTurnMessage(result);
+            TextBox(6, 2, 78,  3, result);
             validInput = true;
           }
           else if(input.startsWith("attack") || input.startsWith("a")){
             Adventurer target = enemies.get((int)(Math.random()*enemies.size()));
             Adventurer attacker = party.get(whichPlayer);
-            TextBox(6, 2, 78,  3, attacker.attack(target));
+            String result = attacker.attack(target);
+            addTurnMessage(result);
+            TextBox(6, 2, 78,  3, result);
             validInput = true;
           }
           else if(input.startsWith("special") || input.startsWith("sp")){
             Adventurer target = enemies.get((int)(Math.random()*enemies.size()));
             Adventurer attacker = party.get(whichPlayer);
-            TextBox(6, 2, 78,  3, attacker.specialAttack(target));
+            String result = attacker.specialAttack(target);
+            addTurnMessage(result);
+            TextBox(6, 2, 78,  3, result);
             validInput = true;
           }
           else if(input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit")){
@@ -328,7 +354,9 @@ public class Game{
       }else{
         Adventurer attacker = enemies.get(whichOpponent);
         Adventurer target = party.get((int)(Math.random()*party.size()));
-        TextBox(6, 2, 78, 3, attacker.attack(target));
+        String result = attacker.attack(target);
+        addTurnMessage(result);
+        TextBox(6, 2, 78,  3, result);
 
         whichOpponent++;
 
@@ -352,7 +380,7 @@ public class Game{
           Text.go(12, 10);
           System.out.println(Text.colorize("You Win! All enemies are defeated.", Text.GREEN));
           Text.go(14, 10);
-          System.out.println(Text.colorize("Press any key to exit.", Text.YELLOW));
+          System.out.println(Text.colorize("Enter any key to exit.", Text.YELLOW));
           new Scanner(System.in).nextLine();
           return;
       } else if (party.isEmpty()) {
@@ -362,13 +390,13 @@ public class Game{
         Text.go(12, 10);
         System.out.println(Text.colorize("You Lose! All party members are dead.", Text.RED));
         Text.go(14, 10);
-        System.out.println(Text.colorize("Press any key to exit.", Text.YELLOW));
+        System.out.println(Text.colorize("Enter any key to exit.", Text.YELLOW));
         new Scanner(System.in).nextLine();
         return;
         }
       //display the updated screen after input has been processed.
       drawScreen(party, enemies);
-
+      drawTurnHistory();
 
     }//end of main game loop
 
