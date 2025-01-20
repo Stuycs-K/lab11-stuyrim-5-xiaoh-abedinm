@@ -107,7 +107,13 @@ public class Game{
     //return a random adventurer (choose between all available subclasses)
     //feel free to overload this method to allow specific names/stats.
     public static Adventurer createRandomAdventurer(){
-      return new Boss("Bob"+(int)(Math.random()*100));
+      Adventurer[] randomAdventurers = new Adventurer[] {
+        new ArtMajor(),
+        new CSMajor(),
+        new PhilosophyMajor(),
+      };
+      int randomIndex = (int) (Math.random()*randomAdventurers.length);
+      return randomAdventurers[randomIndex];
     }
 
     /*Display a List of 2-4 adventurers on the rows row through row+3 (4 rows max)
@@ -215,20 +221,29 @@ public class Game{
   }
 
   public static void run(){
-    //Clear and initialize
     Text.hideCursor();
     Text.clear();
 
-    //Things to attack:
-    //Make an ArrayList of Adventurers and add 1-3 enemies to it.
-    //If only 1 enemy is added it should be the boss class.
-    //start with 1 boss and modify the code to allow 2-3 adventurers later.
-    ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
-    /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    for (int i = 0; i < 3; i++) {
-      enemies.add(createRandomAdventurer());
+    ArrayList<Adventurer> enemies = new ArrayList<Adventurer>();
+
+    // List of CEO names, can remove and just have "Boss" as the name
+    String[] ceoNames = {
+      "Elon Musk", "Jeff Bezos", "Tim Cook", "Sundar Pichai", "Satya Nadella", 
+      "Mark Zuckerberg", "Larry Page", "Sergey Brin", "Warren Buffett", 
+      "Jack Dorsey", "Sheryl Sandberg", "Brian Chesky", "Reed Hastings", 
+      "Travis Kalanick", "Evan Spiegel"
+    };
+    String bossName = ceoNames[(int)(Math.random() * ceoNames.length)];
+
+    int numEnemies = (int)(Math.random()*3)+1;
+
+    if (numEnemies == 1){
+      enemies.add(new Boss(bossName));
+    } else {
+      for (int i = 0; i < 3; i++) {
+        enemies.add(createRandomAdventurer());
+      }
     }
-    /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     //Adventurers you control:
     //Make an ArrayList of Adventurers and add 2-4 Adventurers to it.
