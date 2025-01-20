@@ -328,7 +328,7 @@ public class Game{
       }else{
         Adventurer attacker = enemies.get(whichOpponent);
         Adventurer target = party.get((int)(Math.random()*party.size()));
-        TextBox(6, 3, 78, 3, attacker.attack(target));
+        TextBox(6, 2, 78, 3, attacker.attack(target));
 
         whichOpponent++;
 
