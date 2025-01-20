@@ -256,6 +256,7 @@ public class Game{
 
       //display event based on last turn's input
       if(partyTurn){
+        boolean breakOut = false;
         boolean validInput = false;
         while (validInput == false){
           //Process user input for the last Adventurer:
@@ -295,12 +296,19 @@ public class Game{
             TextBox(6, 2, 78,  3, attacker.specialAttack(target));
             validInput = true;
           }
+          else if(input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit")){
+            breakOut = true;
+            break;
+          }
           //re-asks for input
           else{
             String errMessage = "INVALID INPUT. Please try again. (a)ttack/(sp)ecial/(su)pport: ";
             TextBox(29, 2, 76, 1, errMessage);
             input = userInput(in, errMessage.length());
           }
+        }
+        if (breakOut == true){
+          break;
         }
         //You should decide when you want to re-ask for user input
         //If no errors:
