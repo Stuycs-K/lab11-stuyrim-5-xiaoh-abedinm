@@ -15,12 +15,23 @@ Make a clear list of features that work/dont work
 
 :beetle: This is a bug that affects the game.
 
-:x: support
+:white_check_mark: Play with a group of 3 different types adventurers.
 
-:x: Making enemy skip a turn
+:white_check_mark: Play against 1-3 randomly chosen opponents.
 
-:x: Buffing a teammate
+:white_check_mark: Use Attack/Special operations on your opponents. 
 
+:question: Use support operations on your team. 
+
+:white_check_mark: Program ends when the user chooses to quit, all enemies is defeated, or the entire party is defeated.
+
+:white_check_mark: Display the results of the attack/special/support inside the border.
+
+:white_check_mark: Have a special boss class adventurer for when a single opponent is selected.
+
+:ballot_box_with_check: Display past several actions.
+
+:ballot_box_with_check: Allow the user to choose the types, names, and how many adventurers in their party.
 
 
 ## Adventurers

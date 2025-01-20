@@ -91,7 +91,9 @@ public class Game{
     }
 
     for (String word : words) {
-      if (c + word.length() > col + width) {
+      String plainWord = Text.stripANSI(word);
+      int wordLength = plainWord.length();
+      if (c + wordLength > col + width) {
         r++;
         c = col;
       }
@@ -100,7 +102,7 @@ public class Game{
       }
         Text.go(r, c);
         System.out.print(word + " ");
-        c += word.length() + 1;
+        c += wordLength + 1;
     }
   }
 
@@ -332,7 +334,7 @@ public class Game{
 
     //display this prompt at the start of the game.
 
-    String preprompt = "Enter command for " + party.get(whichPlayer).getName() + " (attack/special/support/quit): ";
+    String preprompt = "Enter command for " + party.get(whichPlayer).getName() + " (attack #/special #/support #/quit): ";
     TextBox(29, 2, 77, 1, preprompt);
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
@@ -409,7 +411,7 @@ public class Game{
           }
           //re-asks for input
           else{
-            String errMessage = "INVALID INPUT. Enter command for " + party.get(whichPlayer).getName() + " (attack/special/quit): ";
+            String errMessage = "INVALID INPUT. Enter command for " + party.get(whichPlayer).getName() + " (attack #/special #/support #/quit): ";
             TextBox(29, 2, 77, 1, errMessage);
             input = userInput(in, errMessage.length());
           }
@@ -424,7 +426,7 @@ public class Game{
         if(whichPlayer < party.size()){
           //This is a player turn.
           //Decide where to draw the following prompt:
-          preprompt = "Enter command for " + party.get(whichPlayer).getName() + " (attack/special/support/quit): ";
+          preprompt = "Enter command for " + party.get(whichPlayer).getName() + " (attack #/special #/support #/quit): ";
           TextBox(29, 2, 77, 1, preprompt);
         }else{
           //This is after the player's turn, and allows the user to see the enemy turn
@@ -454,9 +456,9 @@ public class Game{
           target = enemies.get((int)(Math.random()*enemies.size()));
           result = attacker.support(target);
         }
-
+        
         addTurnMessage(Text.colorize(result, Text.RED));
-        TextBox(6, 2, 76,  3, result);
+        TextBox(6, 2, 76,  3, Text.colorize(result, Text.RED));
 
         whichOpponent++;
 
@@ -465,7 +467,7 @@ public class Game{
           turn++;
           whichOpponent=0;
           partyTurn=true;
-          String prompt = "Enter command for " + party.get(whichPlayer).getName() + " (attack/special/quit): ";
+          String prompt = "Enter command for " + party.get(whichPlayer).getName() + " (attack #/special #/support #/quit): ";
           TextBox(29,2,77,1,prompt);
         }
       }
