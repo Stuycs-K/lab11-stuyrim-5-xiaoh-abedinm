@@ -348,13 +348,27 @@ public class Game{
       removeDeadAdventurers(enemies);
       removeDeadAdventurers(party);
 
-      if (party.isEmpty()) {
-        TextBox(30, 1, 80, 1, "You Lose! All party members are dead.");
+      if (enemies.isEmpty()) {
+          Text.clear();
+          Text.go(10, 10);
+          System.out.println(Text.colorize("Congratulations!", Text.GREEN, Text.BOLD));
+          Text.go(12, 10);
+          System.out.println(Text.colorize("You Win! All enemies are defeated.", Text.GREEN));
+          Text.go(14, 10);
+          System.out.println(Text.colorize("Press any key to exit.", Text.YELLOW));
+          new Scanner(System.in).nextLine();
+          return;
+      } else if (party.isEmpty()) {
+        Text.clear();
+        Text.go(10, 10);
+        System.out.println(Text.colorize("Game Over!", Text.RED, Text.BOLD));
+        Text.go(12, 10);
+        System.out.println(Text.colorize("You Lose! All party members are dead.", Text.RED));
+        Text.go(14, 10);
+        System.out.println(Text.colorize("Press any key to exit.", Text.YELLOW));
+        new Scanner(System.in).nextLine();
         return;
-      } else if (enemies.isEmpty()) {
-        TextBox(30, 1,80, 1, "You Win! All enemies are defeated.");
-        return;
-      }
+        }
       //display the updated screen after input has been processed.
       drawScreen(party, enemies);
 
