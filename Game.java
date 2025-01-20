@@ -248,18 +248,81 @@ public class Game{
     //Adventurers you control:
     //Make an ArrayList of Adventurers and add 2-4 Adventurers to it.
     ArrayList<Adventurer> party = new ArrayList<>();
-    /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    for (int i = 0; i < 3; i++) {
-      party.add(createRandomAdventurer());
+    Scanner in = new Scanner(System.in);
+
+    int numAdventurers = 0;
+    while (numAdventurers < 2 || numAdventurers > 4) {
+        System.out.print("Enter the number of adventurers in your party (2-4): ");
+        numAdventurers = Integer.parseInt(in.nextLine());
+        if (numAdventurers < 2 || numAdventurers > 4) {
+            System.out.println("Error: Number of adventurers must be between 2 and 4. Please try again.");
+        }
     }
-    /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+
+    for (int i = 0; i < numAdventurers; i++) {
+      int choice = 0;
+      while (choice < 1 || choice > 3) { 
+        System.out.print("Choose adventurer type for party member " + (i+1) + " (1: ArtMajor, 2: CSMajor, 3: PhilosophyMajor, Empty: Random): ");
+        String input = in.nextLine();
+
+        if (input.isEmpty()) {
+          choice = (int) (Math.random() * 3) + 1;
+        } else {
+            try {
+              choice = Integer.parseInt(input);
+              if (choice < 1 || choice > 3) {
+                  System.out.println("Error: Adventurer type must be one of the choices. Please try again.");
+              }
+            } catch (NumberFormatException e) {
+              System.out.println("Error: Invalid input. Please enter a number between 1 and 3.");
+            }
+        }
+      }
+
+      System.out.print("Enter a name for your adventurer (empty for default): ");
+      String name = in.nextLine();
+
+      if (choice == 1) {
+        if (name.isEmpty()) {
+          party.add(new ArtMajor());
+        }
+        else {
+          party.add(new ArtMajor(name));
+        }
+      }
+      else if (choice == 2) {
+        if (name.isEmpty()) {
+          party.add(new CSMajor());
+        }
+        else {
+          party.add(new CSMajor(name));
+        }
+      }
+      else if (choice == 3) {
+        if (name.isEmpty()) {
+          party.add(new PhilosophyMajor());
+        }
+        else {
+          party.add(new PhilosophyMajor(name));
+        }
+      }
+      else {
+        if (name.isEmpty()) {
+          party.add(new ArtMajor());
+        }
+        else {
+          party.add(new ArtMajor(name));
+        }
+      }
+    }
+
+    Text.clear();
 
     boolean partyTurn = true;
     int whichPlayer = 0;
     int whichOpponent = 0;
     int turn = 0;
     String input = "";//blank to get into the main loop.
-    Scanner in = new Scanner(System.in);
     //Draw the window border
 
     //You can add parameters to draw screen!
@@ -269,8 +332,8 @@ public class Game{
 
     //display this prompt at the start of the game.
 
-    String preprompt = "Enter command for " + party.get(whichPlayer).getName() + " (attack/special/quit): ";
-    TextBox(29, 2, 76, 1, preprompt);
+    String preprompt = "Enter command for " + party.get(whichPlayer).getName() + " (attack/special/support/quit): ";
+    TextBox(29, 2, 77, 1, preprompt);
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       if (whichPlayer >= party.size()) {
@@ -355,8 +418,8 @@ public class Game{
         if(whichPlayer < party.size()){
           //This is a player turn.
           //Decide where to draw the following prompt:
-          String prompt = "Enter command for " + party.get(whichPlayer).getName() + " (attack/special/quit): ";
-          TextBox(29, 2, 77, 1, prompt);
+          preprompt = "Enter command for " + party.get(whichPlayer).getName() + " (attack/special/support/quit): ";
+          TextBox(29, 2, 77, 1, preprompt);
         }else{
           //This is after the player's turn, and allows the user to see the enemy turn
           //Decide where to draw the following prompt:
@@ -368,14 +431,25 @@ public class Game{
         //done with one party member
       }else{
         Adventurer attacker = enemies.get(whichOpponent);
-        Adventurer target = party.get((int)(Math.random()*party.size()));
-        int ability = (int)(Math.random()*3);
-        String result = attacker.attack(target);;
-        if (ability == 1 && attacker.getSpecial() >= 8){
+        int action = (int) (Math.random()*3);
+
+        Adventurer target;
+        String result = "";
+
+        if (action == 0) {
+          target = party.get((int)(Math.random()*party.size()));
+          result = attacker.attack(target);
+        }
+        else if (action == 1) {
+          target = party.get((int)(Math.random()*party.size()));
           result = attacker.specialAttack(target);
         }
-        
-        addTurnMessage(result);
+        else {
+          target = enemies.get((int)(Math.random()*enemies.size()));
+          result = attacker.support(target);
+        }
+
+        addTurnMessage(Text.colorize(result, Text.RED));
         TextBox(6, 2, 76,  3, result);
 
         whichOpponent++;
