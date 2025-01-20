@@ -45,8 +45,8 @@ public class CSMajor extends Adventurer{
     int damage = (int)(Math.random()*6)+2;
     other.applyDamage(damage);
     restoreSpecial(1);
-    return this + " attacked "+ other + " and dealt "+ damage +
-    " points of damage. They then take a sip of their coffee.";
+    return this + " doesn't shower for "+ damage +
+    " days. Deals "+ damage + " points of stink damage to " + other;
   }
 
   /*Deal 3-12 damage to opponent, only if caffeine is high enough.
@@ -80,9 +80,9 @@ public class CSMajor extends Adventurer{
   }
   /*Restores 6 special and 1 hp to self.*/
   public String support(){
-    int hp = 1;
+    int hp = 3;
     setHP(getHP()+hp);
-    return this+" drinks a coffee to restores "+restoreSpecial(3)+" "
+    return this+" drinks a coffee to restore "+restoreSpecial(2)+" "
     + getSpecialName()+ " and "+hp+" HP";
   }
 }

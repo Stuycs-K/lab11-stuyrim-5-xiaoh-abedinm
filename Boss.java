@@ -8,7 +8,7 @@ public class Boss extends Adventurer{
   }
 
   public Boss(String name){
-    this(name,50);
+    this(name,60);
   }
 
   public Boss(){
@@ -35,7 +35,7 @@ public class Boss extends Adventurer{
 
   /*Deal 2-7 damage to opponent, restores 2 caffeine*/
   public String attack(Adventurer other){
-    int damage = (int)(Math.random()*6)+3;
+    int damage = (int)(Math.random()*6)+4;
     other.applyDamage(damage);
     restoreSpecial(2);
     return this + " underpays "+ other + " and dealt "+ damage +

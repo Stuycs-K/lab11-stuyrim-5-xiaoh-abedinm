@@ -24,27 +24,27 @@ Make a clear list of features that work/dont work
 
 
 ## Adventurers
-| Adventurer       | Attack            | Special            | Support   |
-| :--------------- | :---------------- | :----------------- | :-------- |
-| Art Major        | Throw Paint       | AI Replacement     | Die       |
-| Cs Major         | Code              | McDonalds          | First Try |
-| Philosophy Major | Yap               | Existential Crisis | Inspire   |
+| Adventurer       | Attack            | Special            | Support (others) | Support (self) |
+| :--------------- | :---------------- | :----------------- | :--------------- |:---------------|
+| Art Major        | Throw Paint       | Throws more paint  | Die              | Drinks Paint   |
+| Cs Major         | Stink Bomb        | Hack               | McDonalds        | Drinks Coffee  |
+| Philosophy Major | Yap               | Existential Crisis | Inspire          | Drinks         |
 
 ## Boss
-| Boss       | Attack      | Special     | Support     |
-| :--------- | :---------- | :---------- | :---------- |
-| Boss       | Underpay    | Fire        | Degrade     |
+| Boss       | Attack      | Special     | Support (self) |
+| :--------- | :---------- | :---------- | :------------- |
+| Boss       | Underpay    | Fire        | Degrade        |
 
 ### Attack/Special/Support Descriptions
 | Ability                   | Description                                                           |
 | :------------------------ | :-------------------------------------------------------------------- |
 | Throw Paint               | Throws Paint.                                                         |
-| Code                      | Codes Aggressively.                                                   |
-| Yap                       | "What are you doing with your life?"                                  |
-| AI Replacement            | Uses AI to generate an attack.                                        |
-| McDonalds                 | Works a shift at McDonalds.                                           |
-| Existential Crisis        | "What am I doing with my life?"                                       |
-| Die                       | Dies while healing teammates, comes back alive after 4 turns.         |
+| Stink Bomb                | Refuses to shower, lowering enemy health points.                      |
+| Yap                       | Wastes time by asking meaningless questions.                          |
+| Throws More Paint         | Throws an XL bucket of paint.                                         |
+| Hack                      | Taps into enemy resources and steals specials. Does extra damage.     |
+| Existential Crisis        | Sends enemy into an existential crisis, paralyzing them for one turn. |
+| Die                       | Dies while healing teammates, comes back alive after 2 turns.         |
 | First Try                 | Buffs themselves by creating working code first try.                  |
 | Inspire                   | "Do something with your life." Buffs teammates by inspiring them.     |
 | Underpay                  | Forces an enemy to participate in an interview, dealing damage.       |

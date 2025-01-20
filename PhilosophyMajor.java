@@ -57,7 +57,7 @@ public class PhilosophyMajor extends Adventurer{
       " into an existential crisis. "+
       " This paralyzes "+other+" for 1 turn and does "+ damage +" points of damage.";
     }else{
-      return this + "is currently wallowing in their own existential dread. Instead "+attack(other);
+      return this + " is currently wallowing in their own existential dread. Instead "+attack(other);
     }
 
   }
@@ -69,7 +69,7 @@ public class PhilosophyMajor extends Adventurer{
   }
   /*Restores 6 special and 1 hp to self.*/
   public String support(){
-    int hp = 4;
+    int hp = 3;
     setHP(getHP()+hp);
     return this+" stops wallowing in existential dread for a moment. Heals self for "+hp + "hp";
   }

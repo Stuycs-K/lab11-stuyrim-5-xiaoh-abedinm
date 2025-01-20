@@ -55,20 +55,17 @@ public class ArtMajor extends Adventurer{
         return this + " throws an extra large bucket of paint at "+ other + 
         ". Deals "+ damage +" points of damage.";
       }else{
-        return this + " is out of extra large buckets of paint paint. Instead "+attack(other);
+        return this + " is out of extra large buckets of paint. Instead "+attack(other);
       }
   
     }
     /*Restores 5 special to other*/
     public String support(Adventurer other){
-      int hp = 12;
+      int hp = 11;
       other.setHP(other.getHP()+hp);
       return this+" temporarily fakes death (skips next turn) to make the job market less intense "+ 
       "for a fellow teammate. Heals "+other + " for "+hp+"HP";
-      /* 
-      return this + "chugged a coffee and worked a shift at McDonalds. Used wages to donate "
-      + other.restoreSpecial(5)+" "+other.getSpecialName() + " to " + other;
-      */
+
     }
     /*Restores 6 special and 1 hp to self.*/
     public String support(){
