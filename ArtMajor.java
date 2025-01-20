@@ -14,7 +14,7 @@ public class ArtMajor extends Adventurer{
     }
   
     public ArtMajor(){
-      this("Picasso");
+      this("ArtMajor");
     }
   
     /*The next 8 methods are all required because they are abstract:*/

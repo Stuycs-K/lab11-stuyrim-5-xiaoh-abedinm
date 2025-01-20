@@ -20,7 +20,7 @@ public class CSMajor extends Adventurer{
   }
 
   public CSMajor(){
-    this("Carmack");
+    this("CSMajor");
   }
 
   /*The next 8 methods are all required because they are abstract:*/

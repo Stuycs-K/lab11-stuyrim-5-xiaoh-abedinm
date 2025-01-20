@@ -17,7 +17,7 @@ public class PhilosophyMajor extends Adventurer{
   }
 
   public PhilosophyMajor(){
-    this("John");
+    this("PhilosophyMajor");
   }
 
   /*The next 8 methods are all required because they are abstract:*/
