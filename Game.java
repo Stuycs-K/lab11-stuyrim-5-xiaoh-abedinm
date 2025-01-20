@@ -332,7 +332,7 @@ public class Game{
 
     //display this prompt at the start of the game.
 
-    String preprompt = "Enter command for " + party.get(whichPlayer).getName() + " (attack/special/quit): ";
+    String preprompt = "Enter command for " + party.get(whichPlayer).getName() + " (attack/special/support/quit): ";
     TextBox(29, 2, 77, 1, preprompt);
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
@@ -418,7 +418,7 @@ public class Game{
         if(whichPlayer < party.size()){
           //This is a player turn.
           //Decide where to draw the following prompt:
-          preprompt = "Enter command for " + party.get(whichPlayer).getName() + " (attack/special/quit): ";
+          preprompt = "Enter command for " + party.get(whichPlayer).getName() + " (attack/special/support/quit): ";
           TextBox(29, 2, 77, 1, preprompt);
         }else{
           //This is after the player's turn, and allows the user to see the enemy turn
@@ -431,8 +431,24 @@ public class Game{
         //done with one party member
       }else{
         Adventurer attacker = enemies.get(whichOpponent);
-        Adventurer target = party.get((int)(Math.random()*party.size()));
-        String result = attacker.attack(target);
+        int action = (int) (Math.random()*3);
+
+        Adventurer target;
+        String result = "";
+
+        if (action == 0) {
+          target = party.get((int)(Math.random()*party.size()));
+          result = attacker.attack(target);
+        }
+        else if (action == 1) {
+          target = party.get((int)(Math.random()*party.size()));
+          result = attacker.specialAttack(target);
+        }
+        else {
+          target = enemies.get((int)(Math.random()*enemies.size()));
+          result = attacker.support(target);
+        }
+
         addTurnMessage(Text.colorize(result, Text.RED));
         TextBox(6, 2, 76,  3, result);
 
