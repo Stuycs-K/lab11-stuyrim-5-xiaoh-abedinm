@@ -66,7 +66,7 @@ public class Game{
   public static void drawTurnHistory() {
     int startRow = 6;
     for (int i = 0; i < turnHistory.size();i++) {
-      TextBox(startRow+i*3, 2, 78, 3, turnHistory.get(i));
+      TextBox(startRow+i*3, 2, 77, 3, turnHistory.get(i));
     }
   }
 
@@ -333,7 +333,7 @@ public class Game{
     //display this prompt at the start of the game.
 
     String preprompt = "Enter command for " + party.get(whichPlayer).getName() + " (attack/special/quit): ";
-    TextBox(29, 2, 76, 1, preprompt);
+    TextBox(29, 2, 77, 1, preprompt);
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       if (whichPlayer >= party.size()) {
@@ -358,7 +358,7 @@ public class Game{
             Adventurer attacker = party.get(whichPlayer);
             String result = attacker.attack(target);
             addTurnMessage(result);
-            TextBox(6, 2, 78,  3, result);
+            TextBox(6, 2, 77,  3, result);
             validInput = true;
           }
           else if(input.startsWith("special ") || input.startsWith("sp ")){
@@ -368,7 +368,7 @@ public class Game{
             Adventurer attacker = party.get(whichPlayer);
             String result = attacker.specialAttack(target);
             addTurnMessage(result);
-            TextBox(6, 2, 78,  3, result);
+            TextBox(6, 2, 77,  3, result);
             validInput = true;
           }
           else if(input.startsWith("su ") || input.startsWith("support ")){
@@ -378,7 +378,7 @@ public class Game{
             Adventurer attacker = party.get(whichPlayer);
             String result = attacker.support(target);
             addTurnMessage(result);
-            TextBox(6, 2, 78,  3, result);
+            TextBox(6, 2, 77,  3, result);
             validInput = true;
           }
           else if(input.startsWith("attack") || input.startsWith("a")){
@@ -386,7 +386,7 @@ public class Game{
             Adventurer attacker = party.get(whichPlayer);
             String result = attacker.attack(target);
             addTurnMessage(result);
-            TextBox(6, 2, 78,  3, result);
+            TextBox(6, 2, 77,  3, result);
             validInput = true;
           }
           else if(input.startsWith("special") || input.startsWith("sp")){
@@ -394,7 +394,7 @@ public class Game{
             Adventurer attacker = party.get(whichPlayer);
             String result = attacker.specialAttack(target);
             addTurnMessage(result);
-            TextBox(6, 2, 78,  3, result);
+            TextBox(6, 2, 77,  3, result);
             validInput = true;
           }
           else if(input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit")){
@@ -404,7 +404,7 @@ public class Game{
           //re-asks for input
           else{
             String errMessage = "INVALID INPUT. Please try again. (a)ttack/(sp)ecial/(su)pport: ";
-            TextBox(29, 2, 76, 1, errMessage);
+            TextBox(29, 2, 77, 1, errMessage);
             input = userInput(in, errMessage.length());
           }
         }
@@ -419,12 +419,12 @@ public class Game{
           //This is a player turn.
           //Decide where to draw the following prompt:
           //String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
-          TextBox(29, 2, 76, 1, preprompt);
+          TextBox(29, 2, 77, 1, preprompt);
         }else{
           //This is after the player's turn, and allows the user to see the enemy turn
           //Decide where to draw the following prompt:
           String prompt = "Press enter to see enemy team's turn";
-          TextBox(29, 2, 76, 1, prompt);
+          TextBox(29, 2, 77, 1, prompt);
           partyTurn = false;
           whichOpponent = 0;
         }
@@ -434,7 +434,7 @@ public class Game{
         Adventurer target = party.get((int)(Math.random()*party.size()));
         String result = attacker.attack(target);
         addTurnMessage(result);
-        TextBox(6, 2, 78,  3, result);
+        TextBox(6, 2, 76,  3, result);
 
         whichOpponent++;
 
@@ -444,7 +444,7 @@ public class Game{
           whichOpponent=0;
           partyTurn=true;
           String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
-          TextBox(29,2,76,1,preprompt);
+          TextBox(29,2,77,1,preprompt);
         }
       }
 

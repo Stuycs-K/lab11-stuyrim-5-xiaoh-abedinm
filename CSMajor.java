@@ -44,6 +44,7 @@ public class CSMajor extends Adventurer{
   public String attack(Adventurer other){
     int damage = (int)(Math.random()*6)+2;
     other.applyDamage(damage);
+    restoreSpecial(1);
     return this + " attacked "+ other + " and dealt "+ damage +
     " points of damage. They then take a sip of their coffee.";
   }

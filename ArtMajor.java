@@ -38,7 +38,8 @@ public class ArtMajor extends Adventurer{
     public String attack(Adventurer other){
       int damage = (int)(Math.random()*6)+2;
       other.applyDamage(damage);
-      return this + " throws paint at "+ other + " and dealt "+ damage +
+      restoreSpecial(1);
+      return this + " throws a handful of paint at "+ other + " and dealt "+ damage +
       " points of damage.";
     }
   
@@ -54,7 +55,7 @@ public class ArtMajor extends Adventurer{
         return this + " throws an extra large bucket of paint at "+ other + 
         ". Deals "+ damage +" points of damage.";
       }else{
-        return this + " is out of paint. Instead "+attack(other);
+        return this + " is out of extra large buckets of paint paint. Instead "+attack(other);
       }
   
     }
