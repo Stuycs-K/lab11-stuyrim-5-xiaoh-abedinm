@@ -256,38 +256,51 @@ public class Game{
 
       //display event based on last turn's input
       if(partyTurn){
-
-        //Process user input for the last Adventurer:
-        if(input.startsWith("attack ") || input.startsWith("a ")){
-          String[] temp = input.split(" ");
-          int num = Integer.valueOf(temp[1])-1;
-          Adventurer target = enemies.get(num);
-          Adventurer attacker = party.get(whichPlayer);
-          TextBox(6, 2, 78,  3, attacker.attack(target));
-        }
-        else if(input.startsWith("special ") || input.startsWith("sp ")){
-          String[] temp = input.split(" ");
-          int num = Integer.valueOf(temp[1])-1;
-          Adventurer target = enemies.get(num);
-          Adventurer attacker = party.get(whichPlayer);
-          TextBox(6, 2, 78,  3, attacker.specialAttack(target));
-        }
-        else if(input.startsWith("su ") || input.startsWith("support ")){
-          String[] temp = input.split(" ");
-          int num = Integer.valueOf(temp[1])-1;
-          Adventurer target = party.get(num);
-          Adventurer attacker = party.get(whichPlayer);
-          TextBox(6, 2, 78,  3, attacker.support(target));
-        }
-        else if(input.startsWith("attack") || input.startsWith("a")){
-          Adventurer target = enemies.get((int)(Math.random()*enemies.size()));
-          Adventurer attacker = party.get(whichPlayer);
-          TextBox(6, 2, 78,  3, attacker.attack(target));
-        }
-        else if(input.startsWith("special") || input.startsWith("sp")){
-          Adventurer target = enemies.get((int)(Math.random()*enemies.size()));
-          Adventurer attacker = party.get(whichPlayer);
-          TextBox(6, 2, 78,  3, attacker.specialAttack(target));
+        boolean validInput = false;
+        while (validInput == false){
+          //Process user input for the last Adventurer:
+          if(input.startsWith("attack ") || input.startsWith("a ")){
+            String[] temp = input.split(" ");
+            int num = Integer.valueOf(temp[1])-1;
+            Adventurer target = enemies.get(num);
+            Adventurer attacker = party.get(whichPlayer);
+            TextBox(6, 2, 78,  3, attacker.attack(target));
+            validInput = true;
+          }
+          else if(input.startsWith("special ") || input.startsWith("sp ")){
+            String[] temp = input.split(" ");
+            int num = Integer.valueOf(temp[1])-1;
+            Adventurer target = enemies.get(num);
+            Adventurer attacker = party.get(whichPlayer);
+            TextBox(6, 2, 78,  3, attacker.specialAttack(target));
+            validInput = true;
+          }
+          else if(input.startsWith("su ") || input.startsWith("support ")){
+            String[] temp = input.split(" ");
+            int num = Integer.valueOf(temp[1])-1;
+            Adventurer target = party.get(num);
+            Adventurer attacker = party.get(whichPlayer);
+            TextBox(6, 2, 78,  3, attacker.support(target));
+            validInput = true;
+          }
+          else if(input.startsWith("attack") || input.startsWith("a")){
+            Adventurer target = enemies.get((int)(Math.random()*enemies.size()));
+            Adventurer attacker = party.get(whichPlayer);
+            TextBox(6, 2, 78,  3, attacker.attack(target));
+            validInput = true;
+          }
+          else if(input.startsWith("special") || input.startsWith("sp")){
+            Adventurer target = enemies.get((int)(Math.random()*enemies.size()));
+            Adventurer attacker = party.get(whichPlayer);
+            TextBox(6, 2, 78,  3, attacker.specialAttack(target));
+            validInput = true;
+          }
+          //re-asks for input
+          else{
+            String errMessage = "INVALID INPUT. Please try again. (a)ttack/(sp)ecial/(su)pport: ";
+            TextBox(29, 2, 76, 1, errMessage);
+            input = userInput(in, errMessage.length());
+          }
         }
         //You should decide when you want to re-ask for user input
         //If no errors:

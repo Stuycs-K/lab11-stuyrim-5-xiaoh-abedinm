@@ -15,6 +15,8 @@ Make a clear list of features that work/dont work
 
 :beetle: This is a bug that affects the game.
 
+:question: Interface attack descriptions; "Bbob" instead of "Bob" when the enemy is attacking.
+
 :x: Making enemy skip a turn
 
 :x: Buffing a teammate

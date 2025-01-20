@@ -5,7 +5,7 @@ public class PhilosophyMajor extends Adventurer{
 
   /*the other constructors ultimately call the constructor
   *with all parameters.*/
-  public PhilosophyMajor(String name, int hp, String language){
+  public PhilosophyMajor(String name, int hp){
     super(name,hp);
     purposeMax = 12;
     purpose = purposeMax/2;
