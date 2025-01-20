@@ -25,6 +25,9 @@ public class Text{
     System.out.print("\u001b[0m");
   }
 
+  public static String stripANSI(String text) {
+    return text.replaceAll("\u001b\\[[;\\d]*m", "");
+  }
 
   public static void hideCursor(){
     System.out.print("\u001b[?25l");

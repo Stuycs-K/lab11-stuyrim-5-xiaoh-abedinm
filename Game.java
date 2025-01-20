@@ -91,7 +91,9 @@ public class Game{
     }
 
     for (String word : words) {
-      if (c + word.length() > col + width) {
+      String plainWord = Text.stripANSI(word);
+      int wordLength = plainWord.length();
+      if (c + wordLength > col + width) {
         r++;
         c = col;
       }
@@ -100,7 +102,7 @@ public class Game{
       }
         Text.go(r, c);
         System.out.print(word + " ");
-        c += word.length() + 1;
+        c += wordLength + 1;
     }
   }
 
@@ -448,9 +450,9 @@ public class Game{
           target = enemies.get((int)(Math.random()*enemies.size()));
           result = attacker.support(target);
         }
-
+        
         addTurnMessage(Text.colorize(result, Text.RED));
-        TextBox(6, 2, 76,  3, result);
+        TextBox(6, 2, 76,  3, Text.colorize(result, Text.RED));
 
         whichOpponent++;
 
