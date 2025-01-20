@@ -433,7 +433,7 @@ public class Game{
         Adventurer attacker = enemies.get(whichOpponent);
         Adventurer target = party.get((int)(Math.random()*party.size()));
         String result = attacker.attack(target);
-        addTurnMessage(result);
+        addTurnMessage(Text.colorize(result, Text.RED));
         TextBox(6, 2, 76,  3, result);
 
         whichOpponent++;
