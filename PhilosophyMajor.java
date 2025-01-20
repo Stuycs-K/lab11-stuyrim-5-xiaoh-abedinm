@@ -1,15 +1,14 @@
 public class PhilosophyMajor extends Adventurer{
-  int voice, voice;
+  int voice, voiceMax;
 
-  String[] quotes = new String[]{“It is not the man who has too little, but the man who craves more, that is poor.”};
+  String[] quotes = new String[]{""};
 
   /*the other constructors ultimately call the constructor
   *with all parameters.*/
   public PhilosophyMajor(String name, int hp, String language){
     super(name,hp);
-    caffeineMax = 12;
-    caffeine = caffeineMax/2;
-    preferredLanguage = language;
+    voiceMax = 12;
+    voice = voiceMax/2;
   }
 
 
@@ -18,24 +17,24 @@ public class PhilosophyMajor extends Adventurer{
   }
 
   public PhilosophyMajor(){
-    this("Aristotle");
+    this("John");
   }
 
   /*The next 8 methods are all required because they are abstract:*/
   public String getSpecialName(){
-    return "caffeine";
+    return "voice";
   }
 
   public int getSpecial(){
-    return caffeine;
+    return voice;
   }
 
   public void setSpecial(int n){
-    caffeine = n;
+    voice = n;
   }
 
   public int getSpecialMax(){
-    return caffeineMax;
+    return voiceMax;
   }
 
   /*Deal 2-7 damage to opponent, restores 2 caffeine*/

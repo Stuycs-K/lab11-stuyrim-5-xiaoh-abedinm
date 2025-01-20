@@ -94,7 +94,7 @@ public class Game{
     //return a random adventurer (choose between all available subclasses)
     //feel free to overload this method to allow specific names/stats.
     public static Adventurer createRandomAdventurer(){
-      return new CodeWarrior("Bob"+(int)(Math.random()*100));
+      return new Boss("Bob"+(int)(Math.random()*100));
     }
 
     /*Display a List of 2-4 adventurers on the rows row through row+3 (4 rows max)
@@ -241,7 +241,7 @@ public class Game{
 
     //display this prompt at the start of the game.
 
-    String preprompt = "Enter command for " + party.get(whichPlayer).getName() + " (attack/special/quit):";
+    String preprompt = "Enter command for " + party.get(whichPlayer).getName() + " (attack/special/quit): ";
     TextBox(29, 2, 76, 1, preprompt);
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
@@ -296,12 +296,12 @@ public class Game{
         if(whichPlayer < party.size()){
           //This is a player turn.
           //Decide where to draw the following prompt:
-          String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
-          TextBox(29, 2, 76, 1, prompt);
+          //String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+          TextBox(29, 2, 76, 1, preprompt);
         }else{
           //This is after the player's turn, and allows the user to see the enemy turn
           //Decide where to draw the following prompt:
-          String prompt = "press enter to see monster's turn";
+          String prompt = "Press enter to see enemy team's turn";
           TextBox(29, 2, 76, 1, prompt);
           partyTurn = false;
           whichOpponent = 0;
@@ -320,7 +320,7 @@ public class Game{
           whichOpponent=0;
           partyTurn=true;
           String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
-          TextBox(29,2,76,1,prompt);
+          TextBox(29,2,76,1,preprompt);
         }
       }
 

@@ -6,18 +6,13 @@ public class Boss extends Adventurer{
     rageMax = 12;
     rage = rageMax/2;
   }
-/*
-  public Boss(String name, int hp){
-    this(name,hp);
-  }
-*/
 
   public Boss(String name){
     this(name,24);
   }
 
   public Boss(){
-    this("Carmack");
+    this("Hugh");
   }
 
   /*The next 8 methods are all required because they are abstract:*/
@@ -30,6 +25,7 @@ public class Boss extends Adventurer{
   }
 
   public void setSpecial(int n){
+    
     rage = n;
   }
 
@@ -39,22 +35,27 @@ public class Boss extends Adventurer{
 
   /*Deal 2-7 damage to opponent, restores 2 caffeine*/
   public String attack(Adventurer other){
-    int damage = (int)(Math.random()*6)+2;
+    int damage = (int)(Math.random()*6)+3;
     other.applyDamage(damage);
     restoreSpecial(2);
     return this + " underpays "+ other + " and dealt "+ damage +
-    " points of damage. " + other " cannot afford dinner.";
+    " points of damage. " + other + " cannot afford dinner.";
   }
 
   //hurt or hinder the target adventurer
   //heal or buff the target adventurer
-  public abstract String support(Adventurer other);
+  public String support(Adventurer other){
+    int heal = (int)(Math.random()*3)+1;
+    other.setHP(other.getHP() + heal);
+    return this + " granted " + other + " a raise and PTO. " + other + " heals by " + 
+    heal + "hp.";
+  };
 
   //heal or buff self
-  public abstract String support(){
-    int heal = (int)(Math.random()*6)+2;
-    this.setHP(heal);
-    return this + " degrades "+ other + " and increases self esteem (hp) by "+ heal +
+  public String support(){
+    int heal = (int)(Math.random()*4)+2;
+    this.setHP(this.getHP() + heal);
+    return this + " degrades another and increases self esteem (hp) by "+ heal +
     " points. ";
   }
 
@@ -63,10 +64,9 @@ public class Boss extends Adventurer{
       setSpecial(getSpecial()-8);
       int damage = (int)(Math.random()*5+Math.random()*5)+3;
       other.applyDamage(damage);
-      //HAVE TO CHANGE DESCRIPTIONS
-      return this + ": "+ other+ ", You're fired."
-      " This glitched out "+other+" dealing "+ damage +" points of damage.";
+      return this + " fired "+ other + ", dealing "+ damage +" points of damage.";
     }else{
-      return "Not enough rage to fire people. Instead, "+attack(other);
+      return this + "does not have enough rage to fire people. Instead, "+attack(other);
     }
+  }
 }
