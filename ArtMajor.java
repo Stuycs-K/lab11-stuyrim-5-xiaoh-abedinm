@@ -40,10 +40,14 @@ public class ArtMajor extends Adventurer{
     public String attack(Adventurer other){
       int damage = (int)(Math.random()*6)+2;
       other.applyDamage(damage+getBuff());
+      String buff = "";
+      if(getBuff() > 0){
+        buff = "With a " + getBuff() + "pt buff from a teammate, a total dmg of " + (damage + buff) + " is done.";
+      }
       this.setBuff(0);
       restoreSpecial(1);
       return this + " throws a handful of paint at "+ other + " and dealt "+ damage +
-      " points of damage.";
+      " points of damage alone. " + buff;
     }
   
     /*Deal 3-12 damage to opponent, only if paint is high enough.
@@ -54,9 +58,13 @@ public class ArtMajor extends Adventurer{
         setSpecial(getSpecial()-8);
         int damage = (int)(Math.random()*5+Math.random()*4)+3;
         other.applyDamage(damage+getBuff());
+        String buff = "";
+        if(getBuff() > 0){
+        buff = "With a " + getBuff() + "pt buff from a teammate, a total dmg of " + (damage + buff) + " is done.";
+        }
         this.setBuff(0);
         return this + " throws an extra large bucket of paint at "+ other + 
-        ". Deals "+ damage +" points of damage.";
+        ". Deals "+ damage +" points of damage alone. " + buff;
       }else{
         return this + " is out of extra large buckets of paint. Instead "+attack(other);
       }

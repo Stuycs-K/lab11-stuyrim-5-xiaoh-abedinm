@@ -376,7 +376,13 @@ public class Game{
             int num = Integer.valueOf(temp[1])-1;
             Adventurer target = party.get(num);
             Adventurer attacker = party.get(whichPlayer);
-            String result = attacker.support(target);
+            String result = "";
+            if (target == attacker){
+              result = attacker.support();
+            }
+            else{
+              result = attacker.support(target);
+            }
             addTurnMessage(result);
             TextBox(6, 2, 77,  3, result);
             validInput = true;

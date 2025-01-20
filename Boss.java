@@ -39,10 +39,14 @@ public class Boss extends Adventurer{
   public String attack(Adventurer other){
     int damage = (int)(Math.random()*6)+4;
     other.applyDamage(damage+getBuff());
+    String buff = "";
+    if(getBuff() > 0){
+      buff = "With a " + getBuff() + "pt buff from a teammate, a total dmg of " + (damage + buff) + " is done. ";
+    }
     this.setBuff(0);
     restoreSpecial(2);
     return this + " underpays "+ other + " and dealt "+ damage +
-    " points of damage. " + other + " cannot afford dinner.";
+    " points of damage alone. " + buff + other + " cannot afford dinner.";
   }
 
   //hurt or hinder the target adventurer
@@ -67,8 +71,12 @@ public class Boss extends Adventurer{
       setSpecial(getSpecial()-8);
       int damage = (int)(Math.random()*5+Math.random()*7)+3;
       other.applyDamage(damage+getBuff());
+      String buff = "";
+      if(getBuff() > 0){
+        buff = "With a " + getBuff() + "pt buff from a teammate, a total dmg of " + (damage + buff) + " is done.";
+      }
       this.setBuff(0);
-      return this + " fired "+ other + ", dealing "+ damage +" points of damage.";
+      return this + " fired "+ other + ", dealing "+ damage +" points of damage alone. " + buff;
     }else{
       return this + "does not have enough rage to fire people. Instead, "+attack(other);
     }

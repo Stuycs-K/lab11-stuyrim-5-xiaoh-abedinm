@@ -46,10 +46,15 @@ public class CSMajor extends Adventurer{
   public String attack(Adventurer other){
     int damage = (int)(Math.random()*6)+2;
     other.applyDamage(damage+getBuff());
+    String buff = "";
+    if(getBuff() > 0){
+      buff = "With a " + getBuff() + "pt buff from a teammate, a total dmg of "
+      + (damage + buff) + " is done.";
+    }
     this.setBuff(0);
     restoreSpecial(1);
     return this + " doesn't shower for "+ damage +
-    " days. Deals "+ damage + " points of stink damage to " + other;
+    " days. Deals "+ damage + " points of stink damage to " + other + " alone. " + buff;
   }
 
   /*Deal 3-12 damage to opponent, only if caffeine is high enough.
@@ -60,6 +65,10 @@ public class CSMajor extends Adventurer{
       setSpecial(getSpecial()-8);
       int damage = (int)(Math.random()*5+Math.random()*3)+3;
       other.applyDamage(damage+getBuff());
+      String buff = "";
+      if(getBuff() > 0){
+        buff = "With a " + getBuff() + "pt buff from a teammate, a total dmg of " + (damage + buff) + " is done.";
+      }
       this.setBuff(0);
 
       int steal = (int)(Math.random()*5)+3;
@@ -71,7 +80,7 @@ public class CSMajor extends Adventurer{
 
       return this + " used their "+preferredLanguage+
       " skills to hack "+ other + "'s mind. Transferred "+steal+ " " + other.getSpecialName()+
-      " to themselves and dealt "+ damage +" points of damage.";
+      " to themselves and dealt "+ damage +" points of damage alone. " + buff;
     }else{
       return "Not enough caffeine to use the ultimate code. Instead "+attack(other);
     }
