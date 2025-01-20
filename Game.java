@@ -88,9 +88,6 @@ public class Game{
     }
   }
 
-
-
-
     //return a random adventurer (choose between all available subclasses)
     //feel free to overload this method to allow specific names/stats.
     public static Adventurer createRandomAdventurer(){
@@ -185,7 +182,7 @@ public class Game{
 
       //clear the text that was written
       Text.go(row,col);
-      for (int i = 0; i < 78; i++) {
+      for (int i = 0; i < 78-start; i++) {
         System.out.print(" ");
       }
       Text.go(row,col);
