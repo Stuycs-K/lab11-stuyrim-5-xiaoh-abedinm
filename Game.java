@@ -436,11 +436,11 @@ public class Game{
         Adventurer target;
         String result = "";
 
-        if (action == 0) {
+        if (action == 0 || (action == 1 && attacker.getSpecial() < 8)) {
           target = party.get((int)(Math.random()*party.size()));
           result = attacker.attack(target);
         }
-        else if (action == 1) {
+        else if (action == 1 && attacker.getSpecial() >= 8) {
           target = party.get((int)(Math.random()*party.size()));
           result = attacker.specialAttack(target);
         }

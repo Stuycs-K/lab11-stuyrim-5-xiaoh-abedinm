@@ -1,10 +1,12 @@
 public class Boss extends Adventurer{
   int rage, rageMax;
+  int buff;
 
   public Boss(String name, int hp){
     super(name,hp);
     rageMax = 14;
     rage = rageMax/2;
+    buff = 0;
   }
 
   public Boss(String name){
@@ -36,7 +38,8 @@ public class Boss extends Adventurer{
   /*Deal 2-7 damage to opponent, restores 2 caffeine*/
   public String attack(Adventurer other){
     int damage = (int)(Math.random()*6)+4;
-    other.applyDamage(damage);
+    other.applyDamage(damage+getBuff());
+    this.setBuff(0);
     restoreSpecial(2);
     return this + " underpays "+ other + " and dealt "+ damage +
     " points of damage. " + other + " cannot afford dinner.";
@@ -63,10 +66,18 @@ public class Boss extends Adventurer{
     if(getSpecial() >= 8){
       setSpecial(getSpecial()-8);
       int damage = (int)(Math.random()*5+Math.random()*7)+3;
-      other.applyDamage(damage);
+      other.applyDamage(damage+getBuff());
+      this.setBuff(0);
       return this + " fired "+ other + ", dealing "+ damage +" points of damage.";
     }else{
       return this + "does not have enough rage to fire people. Instead, "+attack(other);
     }
+  }
+
+  public int getBuff(){
+    return buff;
+  }
+  public void setBuff(int n){
+    buff = n;
   }
 }

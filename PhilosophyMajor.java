@@ -1,5 +1,6 @@
 public class PhilosophyMajor extends Adventurer{
   int purpose, purposeMax;
+  int buff;
 
   String[] quotes = new String[]{""};
 
@@ -9,8 +10,8 @@ public class PhilosophyMajor extends Adventurer{
     super(name,hp);
     purposeMax = 12;
     purpose = purposeMax/2;
+    buff =0;
   }
-
 
   public PhilosophyMajor(String name){
     this(name,24);
@@ -40,7 +41,8 @@ public class PhilosophyMajor extends Adventurer{
   /*Deal 2-7 damage to opponent, restores 2 caffeine*/
   public String attack(Adventurer other){
     int damage = (int)(Math.random()*6)+2;
-    other.applyDamage(damage);
+    other.applyDamage(damage+getBuff());
+    this.setBuff(0);
     restoreSpecial(1);
     return this + " wastes "+ other + "'s time to talk about nonsense, dealing "+ damage +
     " points of damage.";
@@ -52,7 +54,8 @@ public class PhilosophyMajor extends Adventurer{
     if(getSpecial() >= 8){
       setSpecial(getSpecial()-8);
       int damage = (int)(Math.random()*5+Math.random()*3)+3;
-      other.applyDamage(damage);
+      other.applyDamage(damage+getBuff());
+      this.setBuff(0);
       return this + " sends "+other+
       " into an existential crisis. "+
       " This paralyzes "+other+" for 1 turn and does "+ damage +" points of damage.";
@@ -64,13 +67,21 @@ public class PhilosophyMajor extends Adventurer{
 
   // ***NEED TO SOMEHOW BUFF TEAMMATES ON THEIR NEXT TURN**
   public String support(Adventurer other){
-    int buff = (int)(Math.random()*5)+2;
-    return "'No one saves us but ourselves.' Inspires and buffs "+ other +" on their next turn. ";
+    int boost = (int)(Math.random()*3)+2;
+    other.setBuff(boost);
+    return "'No one saves us but ourselves.' Inspires and buffs "+ other +" by "+ boost +"dmg on their next turn. ";
   }
-  /*Restores 6 special and 1 hp to self.*/
+  
   public String support(){
     int hp = 3;
     setHP(getHP()+hp);
     return this+" stops wallowing in existential dread for a moment. Heals self for "+hp + "hp";
+  }
+
+  public int getBuff(){
+    return buff;
+  }
+  public void setBuff(int n){
+    buff = n;
   }
 }

@@ -1,5 +1,6 @@
 public class ArtMajor extends Adventurer{
     int paint, paintMax;
+    int buff;
   
     /*the other constructors ultimately call the constructor
     *with all parameters.*/
@@ -7,6 +8,7 @@ public class ArtMajor extends Adventurer{
       super(name,hp);
       paintMax = 12;
       paint = paintMax/2;
+      buff = 0;
     }
   
     public ArtMajor(String name){
@@ -37,7 +39,8 @@ public class ArtMajor extends Adventurer{
     /*Deal 2-7 damage to opponent, restores 2 paint*/
     public String attack(Adventurer other){
       int damage = (int)(Math.random()*6)+2;
-      other.applyDamage(damage);
+      other.applyDamage(damage+getBuff());
+      this.setBuff(0);
       restoreSpecial(1);
       return this + " throws a handful of paint at "+ other + " and dealt "+ damage +
       " points of damage.";
@@ -50,8 +53,8 @@ public class ArtMajor extends Adventurer{
       if(getSpecial() >= 8){
         setSpecial(getSpecial()-8);
         int damage = (int)(Math.random()*5+Math.random()*4)+3;
-        other.applyDamage(damage);
-  
+        other.applyDamage(damage+getBuff());
+        this.setBuff(0);
         return this + " throws an extra large bucket of paint at "+ other + 
         ". Deals "+ damage +" points of damage.";
       }else{
@@ -72,6 +75,13 @@ public class ArtMajor extends Adventurer{
       int hp = 3;
       setHP(getHP()+hp);
       return this + " drinks some paint and heals for " + hp + "hp";
+    }
+    public int getBuff(){
+      return buff;
+    }
+
+    public void setBuff(int n){
+      buff = n;
     }
   }
   

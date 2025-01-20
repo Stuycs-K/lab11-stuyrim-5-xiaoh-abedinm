@@ -1,6 +1,7 @@
 public class CSMajor extends Adventurer{
   int caffeine, caffeineMax;
   String preferredLanguage;
+  int buff;
 
   /*the other constructors ultimately call the constructor
   *with all parameters.*/
@@ -9,6 +10,7 @@ public class CSMajor extends Adventurer{
     caffeineMax = 12;
     caffeine = caffeineMax/2;
     preferredLanguage = language;
+    buff = 0;
   }
 
   public CSMajor(String name, int hp){
@@ -43,7 +45,8 @@ public class CSMajor extends Adventurer{
   /*Deal 2-7 damage to opponent, restores 2 caffeine*/
   public String attack(Adventurer other){
     int damage = (int)(Math.random()*6)+2;
-    other.applyDamage(damage);
+    other.applyDamage(damage+getBuff());
+    this.setBuff(0);
     restoreSpecial(1);
     return this + " doesn't shower for "+ damage +
     " days. Deals "+ damage + " points of stink damage to " + other;
@@ -53,12 +56,13 @@ public class CSMajor extends Adventurer{
   *Reduces caffeine by 8.
   */
   public String specialAttack(Adventurer other){
-    if(getSpecial() >= 10){
+    if(getSpecial() >= 8){
       setSpecial(getSpecial()-8);
       int damage = (int)(Math.random()*5+Math.random()*3)+3;
-      other.applyDamage(damage);
+      other.applyDamage(damage+getBuff());
+      this.setBuff(0);
 
-      int steal = (int)(Math.random()*10)+3;
+      int steal = (int)(Math.random()*5)+3;
       if (steal > other.getSpecial()){
         steal = other.getSpecial();
       }
@@ -75,7 +79,7 @@ public class CSMajor extends Adventurer{
   }
   /*Restores 5 special to other*/
   public String support(Adventurer other){
-    return this + "chugged a coffee and worked a shift at McDonalds. Used wages to donate "
+    return this + " chugged a coffee and worked a shift at McDonalds. Used wages to donate "
     + other.restoreSpecial(5)+" "+other.getSpecialName() + " to " + other;
   }
   /*Restores 6 special and 1 hp to self.*/
@@ -84,5 +88,11 @@ public class CSMajor extends Adventurer{
     setHP(getHP()+hp);
     return this+" drinks a coffee to restore "+restoreSpecial(2)+" "
     + getSpecialName()+ " and "+hp+" HP";
+  }
+  public int getBuff(){
+    return buff;
+  }
+  public void setBuff(int n){
+    buff = n;
   }
 }
