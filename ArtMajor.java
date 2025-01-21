@@ -60,7 +60,7 @@ public class ArtMajor extends Adventurer{
         other.applyDamage(damage+getBuff());
         String buff = "";
         if(getBuff() > 0){
-        buff = "With a " + getBuff() + "pt buff from a teammate, a total dmg of " + (damage + buff) + " is done.";
+        buff = "With a +" + getBuff() + " damage buff from a teammate, a total damage of " + (damage + getBuff()) + " is done.";
         }
         this.setBuff(0);
         return this + " throws an extra large bucket of paint at "+ other + 

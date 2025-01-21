@@ -62,12 +62,12 @@ public class PhilosophyMajor extends Adventurer{
       other.applyDamage(damage+getBuff());
       String buff = "";
       if(getBuff() > 0){
-        buff = "With a " + getBuff() + "pt buff from a teammate, a total dmg of " + (damage + buff) + " is done.";
+        buff = "With a +" + getBuff() + " damage buff from a teammate, a total damage of " + (damage + getBuff()) + " is done.";
       }
       this.setBuff(0);
       return this + " sends "+other+
       " into an existential crisis. "+
-      " This paralyzes "+other+" for 1 turn and does "+ damage +" points of damage alone. " + buff;
+      "This paralyzes "+other+" for 1 turn and does "+ damage +" points of damage alone. " + buff;
     }else{
       return this + " is currently wallowing in their own existential dread. Instead "+attack(other);
     }
