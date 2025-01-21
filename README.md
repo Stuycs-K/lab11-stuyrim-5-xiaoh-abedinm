@@ -25,7 +25,7 @@ Make a clear list of features that work/dont work
 
 :white_check_mark: Program ends with a win/loss screen when all enemies are defeated, or the entire party is defeated.
 
-    :ballot_box_with_check: Displays how many turns the game took in win/loss screen.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :ballot_box_with_check: Displays how many turns the game took in win/loss screen.
 
 :white_check_mark: Display the results of the attack/special/support inside the border.
 
@@ -33,7 +33,7 @@ Make a clear list of features that work/dont work
 
 :white_check_mark: Colors HP red, yellow, or green depending on amount.
 
-    :ballot_box_with_check: Colors Special amount blue when adventurer has enough to use their Special Attack.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :ballot_box_with_check: Colors Special amount blue when adventurer has enough to use their Special Attack.
 
 :ballot_box_with_check: Display past several actions.
 
