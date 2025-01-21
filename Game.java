@@ -402,22 +402,24 @@ public class Game{
       // ENEMY TURN
       }else{
         Adventurer attacker = enemies.get(whichOpponent);
-        int action = (int) (Math.random()*3);
+        int action = (int) (Math.random()*2);
 
         Adventurer target;
         String result = "";
 
-        if (action == 0 || (action == 1 && attacker.getSpecial() < 8)) {
-          target = party.get((int)(Math.random()*party.size()));
-          result = attacker.attack(target);
-        }
-        else if (action == 1 && attacker.getSpecial() >= 8) {
+        if (attacker.getSpecial() >= 8) {
           target = party.get((int)(Math.random()*party.size()));
           result = attacker.specialAttack(target);
         }
         else {
-          target = enemies.get((int)(Math.random()*enemies.size()));
-          result = attacker.support(target);
+          if (action == 0) {
+            target = party.get((int)(Math.random()*party.size()));
+            result = attacker.attack(target);
+          }
+          else {
+            target = enemies.get((int)(Math.random()*enemies.size()));
+            result = attacker.support(target);
+          }
         }
         
         addTurnMessage(Text.colorize(result, Text.RED));
