@@ -42,15 +42,10 @@ public class Boss extends Adventurer{
       return this + " is currently stunned and cannot perform any actions.";
     }
     int damage = (int)(Math.random()*6)+4;
-    other.applyDamage(damage+getBuff());
-    String buff = "";
-    if(getBuff() > 0){
-      buff = "With a " + getBuff() + "pt buff from a teammate, a total dmg of " + (damage + buff) + " is done. ";
-    }
-    this.setBuff(0);
+    other.applyDamage(damage);
     restoreSpecial(2);
     return this + " underpays "+ other + " and dealt "+ damage +
-    " points of damage alone. " + buff + other + " cannot afford dinner.";
+    " points of damage alone. " + other + " cannot afford dinner.";
   }
 
   //hurt or hinder the target adventurer
@@ -60,10 +55,7 @@ public class Boss extends Adventurer{
       this.setSkip(false);
       return this + " is currently stunned and cannot perform any actions.";
     }
-    int heal = (int)(Math.random()*5)+1;
-    other.setHP(other.getHP() + heal);
-    return this + " granted " + other + " a raise and PTO. " + other + " heals by " + 
-    heal + "hp.";
+    return support();
   };
 
   //heal or buff self
@@ -74,8 +66,8 @@ public class Boss extends Adventurer{
     }
     int heal = (int)(Math.random()*7)+5;
     this.setHP(this.getHP() + heal);
-    return this + " degrades another and increases self esteem (hp) by "+ heal +
-    " points. ";
+    return this + " degrades another employee and increases self esteem (HP) by "+ heal +
+    " HP.";
   }
 
   public String specialAttack(Adventurer other){
@@ -86,15 +78,9 @@ public class Boss extends Adventurer{
     if(getSpecial() >= 8){
       setSpecial(getSpecial()-8);
       int damage = (int)(Math.random()*5+Math.random()*7)+3;
-      other.applyDamage(damage+getBuff());
-      String buff = "";
-      if(getBuff() > 0){
-        buff = " thanks to a " + getBuff() + "pt buff from a teammate. ";
-      }
-      this.setBuff(0);
+      other.applyDamage(damage);
       other.setSkip(true);
-      return this + " fired "+ other + ", dealing "+ damage +" points of damage" + buff 
-      + ". Immobilizes " + other;
+      return this + " fired "+ other + ", dealing "+ damage +" points of damage and immobilizing " + other + " for 1 turn.";
     }else{
       return this + "does not have enough rage to fire people. Instead, "+attack(other);
     }
