@@ -23,7 +23,7 @@ public class PhilosophyMajor extends Adventurer{
 
   /*The next 8 methods are all required because they are abstract:*/
   public String getSpecialName(){
-    return "purpose";
+    return "Purpose";
   }
 
   public int getSpecial(){

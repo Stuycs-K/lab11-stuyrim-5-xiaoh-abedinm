@@ -21,7 +21,7 @@ public class ArtMajor extends Adventurer{
   
     /*The next 8 methods are all required because they are abstract:*/
     public String getSpecialName(){
-      return "paint";
+      return "Paint";
     }
   
     public int getSpecial(){

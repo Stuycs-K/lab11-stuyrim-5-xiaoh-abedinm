@@ -19,7 +19,7 @@ public class Boss extends Adventurer{
 
   /*The next 8 methods are all required because they are abstract:*/
   public String getSpecialName(){
-    return "rage";
+    return "Rage";
   }
 
   public int getSpecial(){
