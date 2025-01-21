@@ -23,7 +23,7 @@ public class ArtMajor extends Adventurer{
   
     /*The next 8 methods are all required because they are abstract:*/
     public String getSpecialName(){
-      return "paint";
+      return "Paint";
     }
   
     public int getSpecial(){
@@ -70,10 +70,9 @@ public class ArtMajor extends Adventurer{
         int damage = (int)(Math.random()*5+Math.random()*4)+3;
         other.applyDamage(damage+getBuff());
         String buff = "";
-      int total = getBuff() + damage;
-      if(getBuff() > 0){
-        buff = " total, thanks to a " + getBuff() + "pt buff from a teammate.";
-      }
+        if(getBuff() > 0){
+        buff = "With a +" + getBuff() + " damage buff from a teammate, a total damage of " + (damage + getBuff()) + " is done.";
+        }
         this.setBuff(0);
         return this + " throws an extra large bucket of paint at "+ other + 
         ". Deals "+ total +" points of damage" + buff;
@@ -102,8 +101,14 @@ public class ArtMajor extends Adventurer{
         return this + " is currently stunned/playing tennis with picasso and cannot perform any actions.";
       }
       int hp = 3;
-      setHP(getHP()+hp);
-      return this + " drinks some paint and heals for " + hp + "hp";
+      if (this.getHP() < this.getmaxHP()) {
+        int heal = Math.min(hp, this.getmaxHP()-this.getHP());
+        setHP(getHP()+heal);
+        return this + " drinks some paint and heals for " + heal + "HP.";
+      }
+      else {
+        return this + " drinks some paint and tries to heal for " + hp + " HP, but they are already at full health.";
+      }
     }
 
     public int getBuff(){

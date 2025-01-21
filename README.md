@@ -21,13 +21,19 @@ Make a clear list of features that work/dont work
 
 :white_check_mark: Use Attack/Special operations on your opponents. 
 
-:question: Use support operations on your team. 
+:white_check_mark: Use support operations on your team. 
 
-:white_check_mark: Program ends when the user chooses to quit, all enemies is defeated, or the entire party is defeated.
+:white_check_mark: Program ends with a win/loss screen when all enemies are defeated, or the entire party is defeated.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :ballot_box_with_check: Displays how many turns the game took in win/loss screen.
 
 :white_check_mark: Display the results of the attack/special/support inside the border.
 
 :white_check_mark: Have a special boss class adventurer for when a single opponent is selected.
+
+:white_check_mark: Colors HP red, yellow, or green depending on amount.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :ballot_box_with_check: Colors Special amount blue when adventurer has enough to use their Special Attack.
 
 :ballot_box_with_check: Display past several actions.
 

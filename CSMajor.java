@@ -27,7 +27,7 @@ public class CSMajor extends Adventurer{
 
   /*The next 8 methods are all required because they are abstract:*/
   public String getSpecialName(){
-    return "caffeine";
+    return "Caffeine";
   }
 
   public int getSpecial(){
@@ -42,15 +42,6 @@ public class CSMajor extends Adventurer{
     return caffeineMax;
   }
 
-  /*
-  public string returnSkip(Adventurer victim){
-    if (victim.getSkip() == true){
-      victim.setSkip(false);
-      return victim + " is currently stunned and cannot perform any actions.";
-    }
-  }
-  */
-
   /*Deal 2-7 damage to opponent, restores 2 caffeine*/
   public String attack(Adventurer other){
     if (this.getSkip() == true){
@@ -62,7 +53,8 @@ public class CSMajor extends Adventurer{
     String buff = "";
     int total = getBuff() + damage;
     if(getBuff() > 0){
-      buff = " total, thanks to a " + getBuff() + "pt buff from a teammate.";
+      buff = "With a +" + getBuff() + " damage buff from a teammate, a total damage of "
+      + (damage + getBuff()) + " is done.";
     }
     
     this.setBuff(0);
@@ -115,7 +107,7 @@ public class CSMajor extends Adventurer{
       setSpecial(getSpecial() - 1);
     }
     return this + " chugged a coffee and worked a shift at McDonalds. Used wages to donate "
-    + other.restoreSpecial(2)+" "+other.getSpecialName() + " to " + other;
+    + other.restoreSpecial(5)+" "+other.getSpecialName() + " to " + other + ".";
   }
   /*Restores 6 special and 1 hp to self.*/
   public String support(){
@@ -124,9 +116,16 @@ public class CSMajor extends Adventurer{
       return this + " is currently stunned and cannot perform any actions.";
     }
     int hp = 3;
-    setHP(getHP()+hp);
-    return this+" drinks a coffee to restore "+restoreSpecial(2)+" "
-    + getSpecialName()+ " and "+hp+" HP";
+    if (this.getHP() < this.getmaxHP()) {
+      int heal = Math.min(hp, this.getmaxHP()-this.getHP());
+      setHP(getHP()+heal);
+      return this+" drinks a coffee to restore "+restoreSpecial(2)+" "
+      + getSpecialName()+ " and "+heal+" HP.";
+    }
+    else {
+      return this+" drinks a coffee to restore "+restoreSpecial(2)+" "
+      + getSpecialName()+ " and tried to heal, but they are already at full health.";
+    }
   }
 
   public int getBuff(){

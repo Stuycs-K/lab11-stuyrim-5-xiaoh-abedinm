@@ -23,7 +23,7 @@ public class PhilosophyMajor extends Adventurer{
 
   /*The next 8 methods are all required because they are abstract:*/
   public String getSpecialName(){
-    return "purpose";
+    return "Purpose";
   }
 
   public int getSpecial(){
@@ -74,7 +74,7 @@ public class PhilosophyMajor extends Adventurer{
       String buff = "";
       int total = getBuff() + damage;
       if(getBuff() > 0){
-        buff = " total, thanks to a " + getBuff() + "pt buff from a teammate.";
+        buff = "With a +" + getBuff() + " damage buff from a teammate, a total damage of " + (damage + getBuff()) + " is done.";
       }
       this.setBuff(0);
       other.setSkip(true);
@@ -104,8 +104,14 @@ public class PhilosophyMajor extends Adventurer{
       return this + " is currently stunned and cannot perform any actions.";
     }
     int hp = 3;
-    setHP(getHP()+hp);
-    return this+" stops wallowing in existential dread for a moment. Heals self for "+hp + "hp";
+    if (this.getHP() < this.getmaxHP()) {
+      int heal = Math.min(hp, this.getmaxHP()-this.getHP());
+      setHP(getHP()+heal);
+      return this+" stops wallowing in existential dread for a moment. Heals self for "+ heal + " HP.";
+    }
+    else {
+      return this+" stops wallowing in existential dread for a moment. Tries to heal self for "+hp + " HP, but they are already at full health.";
+    }
   }
 
   public int getBuff(){
