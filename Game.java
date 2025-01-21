@@ -388,7 +388,7 @@ public class Game{
             break;
           }
           else{
-            String errMessage = "INVALID INPUT. Enter command for " + party.get(whichPlayer).getName() + " (attack/special/support/quit): ";
+            String errMessage = "INVALID INPUT. Enter command for " + party.get(whichPlayer).getName() + ": ";
             TextBox(29, 2, 77, 1, Text.colorize(errMessage, Text.RED));
             input = userInput(in, errMessage.length());
           }
