@@ -205,6 +205,17 @@ public class Game{
   public static void run(){
     Text.hideCursor();
     Text.clear();
+    Scanner in = new Scanner(System.in);
+    Text.go(1,1);
+
+    int difficulty = 0;
+    while (difficulty < 1 || difficulty > 3) {
+        System.out.print("Choose difficulty (1: Easy, 2: Normal, 3: Hard): ");
+        difficulty = Integer.parseInt(in.nextLine());
+        if (difficulty < 1 || difficulty > 3) {
+            System.out.println("Error: Difficulty must be between 1 and 3. Please try again.");
+        }
+    }
 
     // ENEMY ADVENTURERS
     ArrayList<Adventurer> enemies = new ArrayList<Adventurer>();
@@ -228,9 +239,31 @@ public class Game{
       }
     }
 
+    if (enemies.size() == 1) {
+      if (difficulty == 1) {
+        enemies.get(0).setHP(45);
+        enemies.get(0).setmaxHP(45);
+      }
+      else if (difficulty == 3) {
+        enemies.get(0).setHP(90);
+        enemies.get(0).setmaxHP(90);
+      }
+    }
+    else {
+      for (Adventurer enemy:enemies) {
+        if (difficulty == 1) {
+          enemy.setHP(18);
+          enemy.setmaxHP(18);
+        }
+        else if (difficulty == 3) {
+          enemy.setHP(36);
+          enemy.setmaxHP(36);
+        }
+      }
+    }
+
     // PARTY ADVENTURERS
     ArrayList<Adventurer> party = new ArrayList<>();
-    Scanner in = new Scanner(System.in);
 
     int numAdventurers = 0;
     while (numAdventurers < 2 || numAdventurers > 4) {
