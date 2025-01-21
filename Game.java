@@ -273,11 +273,20 @@ public class Game{
         }
       }
       else if (choice == 2) {
+        System.out.print("Enter preferred programming language for CSMajor (empty for default): ");
+        String language = in.nextLine();
         if (name.isEmpty()) {
-          party.add(new CSMajor());
-        }
-        else {
-          party.add(new CSMajor(name));
+            if (language.isEmpty()) {
+                party.add(new CSMajor());
+            } else {
+                party.add(new CSMajor("CSMajor", 24, language));
+            }
+        } else {
+            if (language.isEmpty()) {
+                party.add(new CSMajor(name));
+            } else {
+                party.add(new CSMajor(name, 24, language));
+            }
         }
       }
       else if (choice == 3) {
