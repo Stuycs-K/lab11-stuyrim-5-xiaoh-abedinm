@@ -53,17 +53,17 @@ Make a clear list of features that work/dont work
 | Boss       | Underpay    | Fire        | Degrade        |
 
 ### Attack/Special/Support Descriptions
-| Ability                   | Description                                                           |
-| :------------------------ | :-------------------------------------------------------------------- |
-| Throw Paint               | Throws Paint.                                                         |
-| Stink Bomb                | Refuses to shower, lowering enemy health points.                      |
-| Yap                       | Wastes time by asking meaningless questions.                          |
-| Throws More Paint         | Throws an XL bucket of paint.                                         |
-| Hack                      | Taps into enemy resources and steals specials. Does extra damage.     |
-| Existential Crisis        | Sends enemy into an existential crisis, paralyzing them for one turn. |
-| Die                       | Dies while healing teammates, comes back alive after 2 turns.         |
-| First Try                 | Buffs themselves by creating working code first try.                  |
-| Inspire                   | "Do something with your life." Buffs teammates by inspiring them.     |
-| Underpay                  | Forces an enemy to participate in an interview, dealing damage.       |
-| Fire                      | Layoffs all enemies, dealing damage.                                  |
-| Degrade                   | Sends rejections, buffing self-esteem and de-buffs enemies.           |
+| Ability                   | Description                                                                    |
+| :------------------------ | :----------------------------------------------------------------------------- |
+| Throw Paint               | Throws Paint.                                                                  |
+| Stink Bomb                | Refuses to shower, lowering enemy health points.                               |
+| Yap                       | Wastes time by asking meaningless questions.                                   |
+| Throws More Paint         | Throws an XL bucket of paint.                                                  |
+| Hack                      | Taps into enemy resources and steals specials. Does extra damage.              |
+| Existential Crisis        | Sends enemy into an existential crisis, paralyzing them for one turn.          |
+| Die                       | Dies while healing a teammate, comes back alive after 1 turns.                 |
+| McDonalds                 | Consumes caffeine, works a shift at McD's, and increases a teammate's special. |
+| Inspire                   | "Do something with your life." Buffs teammates by inspiring them.              |
+| Underpay                  | Underpays an enemy, refusing to give the full paycheck and dealing damage.     |
+| Fire                      | Layoffs an enemy, dealing damage and making them immobile for a turn.          |
+| Degrade                   | Degrades an enemy, buffing self-esteem and de-buffs enemies.                   |

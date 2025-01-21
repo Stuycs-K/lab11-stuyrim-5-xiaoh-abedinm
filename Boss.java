@@ -89,10 +89,12 @@ public class Boss extends Adventurer{
       other.applyDamage(damage+getBuff());
       String buff = "";
       if(getBuff() > 0){
-        buff = "With a " + getBuff() + "pt buff from a teammate, a total dmg of " + (damage + buff) + " is done.";
+        buff = " thanks to a " + getBuff() + "pt buff from a teammate. ";
       }
       this.setBuff(0);
-      return this + " fired "+ other + ", dealing "+ damage +" points of damage alone. " + buff;
+      other.setSkip(true);
+      return this + " fired "+ other + ", dealing "+ damage +" points of damage" + buff 
+      + ". Immobilizes " + other;
     }else{
       return this + "does not have enough rage to fire people. Instead, "+attack(other);
     }
