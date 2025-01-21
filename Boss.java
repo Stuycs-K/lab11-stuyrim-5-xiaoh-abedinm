@@ -1,3 +1,4 @@
+import java.util.*;
 public class Boss extends Adventurer{
   int rage, rageMax, buff;
   boolean skip;
@@ -64,10 +65,33 @@ public class Boss extends Adventurer{
       this.setSkip(false);
       return this + " is currently stunned and cannot perform any actions.";
     }
-    int heal = (int)(Math.random()*7)+5;
-    this.setHP(this.getHP() + heal);
-    return this + " degrades another employee and increases self esteem (HP) by "+ heal +
-    " HP.";
+    int hp = (int)(Math.random()*7)+5;
+    if (this.getHP() < this.getmaxHP()) {
+      int heal = Math.min(hp, this.getmaxHP()-this.getHP());
+      this.setHP(this.getHP() + heal);
+      return this + " degrades another employee and increases self esteem (HP) by "+ heal + " HP.";
+    }
+    else {
+      return this + " degrades another employee and tries to increase self esteem (HP) by "+ hp + " HP, but they are already at full health.";
+    }
+  }
+
+  public String specialAttack(Adventurer other, ArrayList<Adventurer> party){
+    if (this.getSkip() == true){
+      this.setSkip(false);
+      return this + " is currently stunned and cannot perform any actions.";
+    }
+    other.setSkip(true);
+    if(getSpecial() >= 8){
+      setSpecial(getSpecial()-8);
+      int damage = (int)(Math.random()*5+Math.random()*7)+3;
+      for (Adventurer members : party) {
+        members.applyDamage(damage);
+      }
+      return this + " layed off everybody, dealing "+ damage +" points of damage to all adventurers and also immobilizing " + other + " for 1 turn in the process.";
+    }else{
+      return this + " does not have enough rage to fire people. Instead, "+attack(other);
+    }
   }
 
   public String specialAttack(Adventurer other){
@@ -82,7 +106,7 @@ public class Boss extends Adventurer{
       other.setSkip(true);
       return this + " fired "+ other + ", dealing "+ damage +" points of damage and immobilizing " + other + " for 1 turn.";
     }else{
-      return this + "does not have enough rage to fire people. Instead, "+attack(other);
+      return this + " does not have enough rage to fire people. Instead, "+attack(other);
     }
   }
 

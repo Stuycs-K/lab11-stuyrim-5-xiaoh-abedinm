@@ -451,7 +451,12 @@ public class Game{
 
         if (attacker.getSpecial() >= 8) {
           target = party.get((int)(Math.random()*party.size()));
-          result = attacker.specialAttack(target);
+          if ((attacker instanceof Boss) && (Math.random() >= 0.3)) {
+            result = ((Boss)attacker).specialAttack(target, party);
+          }
+          else {
+            result = attacker.specialAttack(target);
+          }
         }
         else {
           if (action == 0) {
