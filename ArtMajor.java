@@ -42,14 +42,14 @@ public class ArtMajor extends Adventurer{
     public String attack(Adventurer other){
       if (this.getSkip() == true){
         this.setSkip(false);
-        return this + " is currently stunned/playing tennis with picasso and cannot perform any actions.";
+        return this + " is currently stunned/playing tennis with Picasso and cannot perform any actions.";
       }
       int damage = (int)(Math.random()*6)+2;
       other.applyDamage(damage+getBuff());
       String buff = "";
       int total = getBuff() + damage;
       if(getBuff() > 0){
-        buff = " total, thanks to a " + getBuff() + "pt buff from a teammate.";
+        buff = " total, thanks to a +" + getBuff() + " damage buff from a teammate.";
       }
       this.setBuff(0);
       restoreSpecial(1);
@@ -63,7 +63,7 @@ public class ArtMajor extends Adventurer{
     public String specialAttack(Adventurer other){
       if (this.getSkip() == true){
         this.setSkip(false);
-        return this + " is currently stunned/playing tennis with picasso and cannot perform any actions.";
+        return this + " is currently stunned/playing tennis with Picasso and cannot perform any actions.";
       }
       if(getSpecial() >= 8){
         setSpecial(getSpecial()-8);
@@ -86,20 +86,26 @@ public class ArtMajor extends Adventurer{
     public String support(Adventurer other){
       if (this.getSkip() == true){
         this.setSkip(false);
-        return this + " is currently stunned/playing tennis with picasso and cannot perform any actions.";
+        return this + " is currently stunned/playing tennis with Picasso and cannot perform any actions.";
       }
       int hp = 7;
       other.setHP(other.getHP()+hp);
       setSkip(true);
-      return this+" temporarily fakes death (skips next turn) to make the job market less intense "+ 
-      "for "+ other + ". Heals "+other + " for "+hp+"HP";
+      if (other.getHP() < other.getmaxHP()) {
+        return this+" temporarily fakes death and skips next turn to make the job market less intense "+ 
+        "for "+ other + ", heals "+other + " for "+hp+" HP.";
+      }
+      else {
+        return this+" temporarily fakes death and skips next turn to make the job market less intense "+ 
+        "for "+ other + ", tries to heal "+other + " for "+hp+" HP, but they are already at full health.";
+      }
 
     }
     
     public String support(){
       if (this.getSkip() == true){
         this.setSkip(false);
-        return this + " is currently stunned/playing tennis with picasso and cannot perform any actions.";
+        return this + " is currently stunned/playing tennis with Picasso and cannot perform any actions.";
       }
       int hp = 3;
       if (this.getHP() < this.getmaxHP()) {
