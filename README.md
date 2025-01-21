@@ -3,25 +3,11 @@
 
 ## Features
 
-Make a clear list of features that work/dont work
-
-:white_check_mark: This feature works.
-
-:question: This feature works partially.
-
-:ballot_box_with_check: This extra (beyond the things that the lab was supposed to do) feature works.
-
-:x: This required feature does not work.
-
-:beetle: This is a bug that affects the game.
-
 :white_check_mark: Play with a group of 3 different types adventurers.
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :ballot_box_with_check: Allow the user to choose the types, names, and how many adventurers in their party.
+
 :white_check_mark: Play against 1-3 randomly chosen opponents.
-
-:white_check_mark: Use Attack/Special operations on your opponents. 
-
-:white_check_mark: Use support operations on your team. 
 
 :white_check_mark: Program ends with a win/loss screen when all enemies are defeated, or the entire party is defeated.
 
@@ -29,15 +15,27 @@ Make a clear list of features that work/dont work
 
 :white_check_mark: Display the results of the attack/special/support inside the border.
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :ballot_box_with_check: Display past several actions.
+
 :white_check_mark: Have a special boss class adventurer for when a single opponent is selected.
 
-:white_check_mark: Colors HP red, yellow, or green depending on amount.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :ballot_box_with_check: Boss Special Attack has a 70% chance of hitting all party members.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :ballot_box_with_check: Colors Special amount blue when adventurer has enough to use their Special Attack.
+:white_check_mark: Colors HP red, yellow, or green depending on percentage.
 
-:ballot_box_with_check: Display past several actions.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :ballot_box_with_check: Colors Special Amount blue when adventurer has enough to use their Special Attack.
 
-:ballot_box_with_check: Allow the user to choose the types, names, and how many adventurers in their party.
+:white_check_mark: Use Attack/Special operations on your opponents.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :ballot_box_with_check: Randomly chooses opponent if no number is given after (a)ttack #/(sp)ecial #.
+
+:white_check_mark: Use Support operations on your team.
+
+:ballot_box_with_check: Buff team/self by boosting damage for one turn.
+
+:ballot_box_with_check: Difficultly choice (Easy, Normal, Hard) scales Boss and enemy HP depending on choice.
+
+:ballot_box_with_check: Stun for one turn via Special Attack.
 
 
 ## Adventurers
@@ -45,7 +43,7 @@ Make a clear list of features that work/dont work
 | :--------------- | :---------------- | :----------------- | :--------------- |:---------------|
 | Art Major        | Throw Paint       | Throws more paint  | Die              | Drinks Paint   |
 | Cs Major         | Stink Bomb        | Hack               | McDonalds        | Drinks Coffee  |
-| Philosophy Major | Yap               | Existential Crisis | Inspire          | Drinks         |
+| Philosophy Major | Yap               | Existential Crisis | Inspire          | Inspire        |
 
 ## Boss
 | Boss       | Attack      | Special     | Support (self) |
