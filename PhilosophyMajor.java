@@ -50,13 +50,13 @@ public class PhilosophyMajor extends Adventurer{
     String buff = "";
     int total = getBuff() + damage;
     if(getBuff() > 0){
-      buff = " total, thanks to a " + getBuff() + "pt buff from a teammate.";
+      buff = " Thanks to a +" + getBuff() + " damage buff from a teammate.";
     }
     this.setBuff(0);
     restoreSpecial(1);
 
     return this + " wastes "+ other + "'s time to talk about nonsense, dealing "+ total +
-    " points of damage" + buff;
+    " points of damage." + buff;
   }
 
   /*Need to make opponent skip a turn
@@ -74,14 +74,14 @@ public class PhilosophyMajor extends Adventurer{
       String buff = "";
       int total = getBuff() + damage;
       if(getBuff() > 0){
-        buff = "With a +" + getBuff() + " damage buff from a teammate, a total damage of " + (damage + getBuff()) + " is done.";
+        buff = " With a +" + getBuff() + " damage buff from a teammate, a total damage of " + (damage + getBuff()) + " is done.";
       }
       this.setBuff(0);
       other.setSkip(true);
 
       return this + " sends "+other+
       " into an existential crisis. "+
-      "This paralyzes "+other+" for 1 turn and does "+ total +" points of damage" + buff;
+      "This paralyzes "+other+" for 1 turn and does "+ total +" points of damage" + buff + ".";
     }else{
       return this + " is currently wallowing in their own existential dread. Instead, "+attack(other);
     }
@@ -95,7 +95,7 @@ public class PhilosophyMajor extends Adventurer{
     }
     int boost = (int)(Math.random()*3)+1;
     other.setBuff(boost);
-    return "'No one saves us but ourselves.' "+ this +" inspires and buffs "+ other +" by "+ boost +"dmg on their next turn. ";
+    return "'No one saves us but ourselves.' "+ this +" inspires and buffs "+ other +" by +"+ boost +" damage on their next turn.";
   }
   
   public String support(){
