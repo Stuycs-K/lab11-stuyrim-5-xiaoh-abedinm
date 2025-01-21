@@ -1,6 +1,6 @@
 public class Boss extends Adventurer{
-  int rage, rageMax;
-  int buff;
+  int rage, rageMax, buff;
+  boolean skip;
 
   public Boss(String name, int hp){
     super(name,hp);
@@ -37,6 +37,10 @@ public class Boss extends Adventurer{
 
   /*Deal 2-7 damage to opponent, restores 2 caffeine*/
   public String attack(Adventurer other){
+    if (this.getSkip() == true){
+      this.setSkip(false);
+      return this + " is currently stunned and cannot perform any actions.";
+    }
     int damage = (int)(Math.random()*6)+4;
     other.applyDamage(damage+getBuff());
     String buff = "";
@@ -52,6 +56,10 @@ public class Boss extends Adventurer{
   //hurt or hinder the target adventurer
   //heal or buff the target adventurer
   public String support(Adventurer other){
+    if (this.getSkip() == true){
+      this.setSkip(false);
+      return this + " is currently stunned and cannot perform any actions.";
+    }
     int heal = (int)(Math.random()*5)+1;
     other.setHP(other.getHP() + heal);
     return this + " granted " + other + " a raise and PTO. " + other + " heals by " + 
@@ -60,6 +68,10 @@ public class Boss extends Adventurer{
 
   //heal or buff self
   public String support(){
+    if (this.getSkip() == true){
+      this.setSkip(false);
+      return this + " is currently stunned and cannot perform any actions.";
+    }
     int heal = (int)(Math.random()*6)+2;
     this.setHP(this.getHP() + heal);
     return this + " degrades another and increases self esteem (hp) by "+ heal +
@@ -67,6 +79,10 @@ public class Boss extends Adventurer{
   }
 
   public String specialAttack(Adventurer other){
+    if (this.getSkip() == true){
+      this.setSkip(false);
+      return this + " is currently stunned and cannot perform any actions.";
+    }
     if(getSpecial() >= 8){
       setSpecial(getSpecial()-8);
       int damage = (int)(Math.random()*5+Math.random()*7)+3;
@@ -85,7 +101,16 @@ public class Boss extends Adventurer{
   public int getBuff(){
     return buff;
   }
+
   public void setBuff(int n){
     buff = n;
+  }
+
+  public boolean getSkip(){
+    return skip;
+  }
+
+  public void setSkip(boolean n){
+    skip = n;
   }
 }

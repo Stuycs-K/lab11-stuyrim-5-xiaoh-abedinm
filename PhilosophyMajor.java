@@ -1,6 +1,6 @@
 public class PhilosophyMajor extends Adventurer{
-  int purpose, purposeMax;
-  int buff;
+  int purpose, purposeMax, buff;
+  boolean skip;
 
   String[] quotes = new String[]{""};
 
@@ -40,48 +40,69 @@ public class PhilosophyMajor extends Adventurer{
 
   /*Deal 2-7 damage to opponent, restores 2 caffeine*/
   public String attack(Adventurer other){
+    if (this.getSkip() == true){
+      this.setSkip(false);
+      return this + " is currently stunned and cannot perform any actions.";
+    }
     int damage = (int)(Math.random()*6)+2;
     other.applyDamage(damage+getBuff());
-    this.setBuff(0);
+
     String buff = "";
+    int total = getBuff() + damage;
     if(getBuff() > 0){
-      buff = "With a " + getBuff() + "pt buff from a teammate, a total dmg of " + (damage + buff) + " is done.";
+      buff = " total, thanks to a " + getBuff() + "pt buff from a teammate.";
     }
     this.setBuff(0);
     restoreSpecial(1);
-    return this + " wastes "+ other + "'s time to talk about nonsense, dealing "+ damage +
-    " points of damage alone. " + buff;
+
+    return this + " wastes "+ other + "'s time to talk about nonsense, dealing "+ total +
+    " points of damage" + buff;
   }
 
   /*Need to make opponent skip a turn
   */
   public String specialAttack(Adventurer other){
+    if (this.getSkip() == true){
+      this.setSkip(false);
+      return this + " is currently stunned and cannot perform any actions.";
+    }
     if(getSpecial() >= 8){
       setSpecial(getSpecial()-8);
       int damage = (int)(Math.random()*5+Math.random()*3)+3;
       other.applyDamage(damage+getBuff());
+
       String buff = "";
+      int total = getBuff() + damage;
       if(getBuff() > 0){
-        buff = "With a " + getBuff() + "pt buff from a teammate, a total dmg of " + (damage + buff) + " is done.";
+        buff = " total, thanks to a " + getBuff() + "pt buff from a teammate.";
       }
       this.setBuff(0);
+      other.setSkip(true);
+
       return this + " sends "+other+
       " into an existential crisis. "+
-      " This paralyzes "+other+" for 1 turn and does "+ damage +" points of damage alone. " + buff;
+      "This paralyzes "+other+" for 1 turn and does "+ total +" points of damage" + buff;
     }else{
-      return this + " is currently wallowing in their own existential dread. Instead "+attack(other);
+      return this + " is currently wallowing in their own existential dread. Instead, "+attack(other);
     }
 
   }
 
-  // ***NEED TO SOMEHOW BUFF TEAMMATES ON THEIR NEXT TURN**
   public String support(Adventurer other){
+    if (this.getSkip() == true){
+      this.setSkip(false);
+      return this + " is currently stunned and cannot perform any actions.";
+    }
     int boost = (int)(Math.random()*3)+1;
     other.setBuff(boost);
     return "'No one saves us but ourselves.' "+ this +" inspires and buffs "+ other +" by "+ boost +"dmg on their next turn. ";
   }
   
   public String support(){
+    if (this.getSkip() == true){
+      this.setSkip(false);
+      return this + " is currently stunned and cannot perform any actions.";
+    }
     int hp = 3;
     setHP(getHP()+hp);
     return this+" stops wallowing in existential dread for a moment. Heals self for "+hp + "hp";
@@ -92,5 +113,12 @@ public class PhilosophyMajor extends Adventurer{
   }
   public void setBuff(int n){
     buff = n;
+  }
+
+  public boolean getSkip(){
+    return skip;
+  }
+  public void setSkip(boolean n){
+    skip = n;
   }
 }

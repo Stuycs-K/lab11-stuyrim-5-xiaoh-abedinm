@@ -1,9 +1,8 @@
 import java.util.Random;
 public abstract class Adventurer{
   private String name;
-  private int HP,maxHP;
-  private int buff;
-  //private boolean skip;
+  private int HP,maxHP,buff;
+  private boolean skip;
 
   //Abstract methods are meant to be implemented in child classes.
   /*
@@ -20,6 +19,9 @@ public abstract class Adventurer{
 
   public abstract int getBuff();
   public abstract void setBuff(int n);
+
+  public abstract boolean getSkip();
+  public abstract void setSkip(boolean n);
 
   //concrete method written using abstract methods.
   //refill special resource by amount, but only up to at most getSpecialMax()
