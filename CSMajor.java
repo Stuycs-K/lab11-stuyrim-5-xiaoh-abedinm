@@ -89,14 +89,21 @@ public class CSMajor extends Adventurer{
   /*Restores 5 special to other*/
   public String support(Adventurer other){
     return this + " chugged a coffee and worked a shift at McDonalds. Used wages to donate "
-    + other.restoreSpecial(5)+" "+other.getSpecialName() + " to " + other;
+    + other.restoreSpecial(5)+" "+other.getSpecialName() + " to " + other + ".";
   }
   /*Restores 6 special and 1 hp to self.*/
   public String support(){
     int hp = 3;
-    setHP(getHP()+hp);
-    return this+" drinks a coffee to restore "+restoreSpecial(2)+" "
-    + getSpecialName()+ " and "+hp+" HP";
+    if (this.getHP() < this.getmaxHP()) {
+      int heal = Math.min(hp, this.getmaxHP()-this.getHP());
+      setHP(getHP()+heal);
+      return this+" drinks a coffee to restore "+restoreSpecial(2)+" "
+      + getSpecialName()+ " and "+heal+" HP.";
+    }
+    else {
+      return this+" drinks a coffee to restore "+restoreSpecial(2)+" "
+      + getSpecialName()+ " and tried to heal, but they are already at full health.";
+    }
   }
   public int getBuff(){
     return buff;

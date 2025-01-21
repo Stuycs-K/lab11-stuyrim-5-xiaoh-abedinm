@@ -73,16 +73,28 @@ public class ArtMajor extends Adventurer{
     /*Restores 5 special to other*/
     public String support(Adventurer other){
       int hp = 11;
-      other.setHP(other.getHP()+hp);
-      return this+" temporarily fakes death (skips next turn) to make the job market less intense "+ 
-      "for a fellow teammate. Heals "+other + " for "+hp+"HP";
-
+      if (other.getHP() < other.getmaxHP()) {
+        int heal = Math.min(hp, other.getmaxHP()-other.getHP());
+        other.setHP(other.getHP()+heal);
+        return this+" temporarily fakes death and skips their next turn to make the job market less intense "+ 
+        "for a fellow teammate. Heals " + other + " for "+heal+" HP.";
+      }
+      else {
+        return this+" temporarily fakes death and skips their next turn to make the job market less intense "+ 
+        "for a fellow teammate. Tried to heal " + other + " for "+hp+" HP, but they are already at full health.";
+      }
     }
     /*Restores 6 special and 1 hp to self.*/
     public String support(){
       int hp = 3;
-      setHP(getHP()+hp);
-      return this + " drinks some paint and heals for " + hp + "hp";
+      if (this.getHP() < this.getmaxHP()) {
+        int heal = Math.min(hp, this.getmaxHP()-this.getHP());
+        setHP(getHP()+heal);
+        return this + " drinks some paint and heals for " + heal + "HP.";
+      }
+      else {
+        return this + " drinks some paint and tries to heal for " + hp + " HP, but they are already at full health.";
+      }
     }
     public int getBuff(){
       return buff;

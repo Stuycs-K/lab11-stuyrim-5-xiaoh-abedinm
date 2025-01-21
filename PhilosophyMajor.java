@@ -83,8 +83,14 @@ public class PhilosophyMajor extends Adventurer{
   
   public String support(){
     int hp = 3;
-    setHP(getHP()+hp);
-    return this+" stops wallowing in existential dread for a moment. Heals self for "+hp + "hp";
+    if (this.getHP() < this.getmaxHP()) {
+      int heal = Math.min(hp, this.getmaxHP()-this.getHP());
+      setHP(getHP()+heal);
+      return this+" stops wallowing in existential dread for a moment. Heals self for "+ heal + " HP.";
+    }
+    else {
+      return this+" stops wallowing in existential dread for a moment. Tries to heal self for "+hp + " HP, but they are already at full health.";
+    }
   }
 
   public int getBuff(){
