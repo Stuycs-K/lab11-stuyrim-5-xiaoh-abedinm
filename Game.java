@@ -87,7 +87,7 @@ public class Game{
       String hp = "HP: " + colorByPercent(temp.getHP(), temp.getmaxHP());
       drawText(hp, startRow + 1, startCol);
 
-      String special = temp.getSpecialName() + ": " + temp.getSpecial();
+      String special = temp.getSpecialName() + ": " + colorSpecial(temp.getSpecial(), 8);
       drawText(special, startRow + 2, startCol);
     }
   }
@@ -138,6 +138,16 @@ public class Game{
     }
     else {
       return(Text.colorize(output, Text.GREEN));
+    }
+  }
+
+  public static String colorSpecial(int special, int requiredSpecial) {
+    String output = "" + special;
+    if (special >= requiredSpecial) {
+      return(Text.colorize(output, Text.BLUE));
+    }
+    else {
+      return output;
     }
   }
 
@@ -199,7 +209,7 @@ public class Game{
     // ENEMY ADVENTURERS
     ArrayList<Adventurer> enemies = new ArrayList<Adventurer>();
 
-    // LIST OF BOSS NAMES
+    // List of boss names
     String[] ceoNames = {
       "Elon Musk", "Jeff Bezos", "Tim Cook", "Sundar Pichai", "Satya Nadella", 
       "Mark Zuckerberg", "Larry Page", "Sergey Brin", "Warren Buffett", 
@@ -243,10 +253,10 @@ public class Game{
             try {
               choice = Integer.parseInt(input);
               if (choice < 1 || choice > 3) {
-                  System.out.println("Error: Adventurer type must be one of the choices. Please try again.");
+                  System.out.println(Text.colorize("Error: Adventurer type must be one of the choices. Please try again.", Text.RED));
               }
             } catch (NumberFormatException e) {
-              System.out.println("Error: Invalid input. Please enter a number between 1 and 3.");
+              System.out.println(Text.colorize("Error: Invalid input. Please enter a number between 1 and 3.", Text.RED));
             }
         }
       }
@@ -370,7 +380,7 @@ public class Game{
           }
           else{
             String errMessage = "INVALID INPUT. Enter command for " + party.get(whichPlayer).getName() + " (attack/special/support/quit): ";
-            TextBox(29, 2, 77, 1, errMessage);
+            TextBox(29, 2, 77, 1, Text.colorize(errMessage, Text.RED));
             input = userInput(in, errMessage.length());
           }
         }
@@ -434,7 +444,7 @@ public class Game{
           Text.go(10, 10);
           System.out.println(Text.colorize("Congratulations!", Text.GREEN, Text.BOLD));
           Text.go(12, 10);
-          System.out.println(Text.colorize("You Win! All enemies are defeated.", Text.GREEN));
+          System.out.println(Text.colorize("You Won after " + turn + " turns! All enemies are defeated.", Text.GREEN));
           Text.go(14, 10);
           System.out.println(Text.colorize("Press Enter to exit.", Text.YELLOW));
           new Scanner(System.in).nextLine();
@@ -444,7 +454,7 @@ public class Game{
         Text.go(10, 10);
         System.out.println(Text.colorize("Game Over!", Text.RED, Text.BOLD));
         Text.go(12, 10);
-        System.out.println(Text.colorize("You Lose! All party members are dead.", Text.RED));
+        System.out.println(Text.colorize("You Lost after " + turn + " turns! All party members are dead.", Text.RED));
         Text.go(14, 10);
         System.out.println(Text.colorize("Press Enter to exit.", Text.YELLOW));
         new Scanner(System.in).nextLine();
