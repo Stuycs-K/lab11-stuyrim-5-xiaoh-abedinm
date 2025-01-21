@@ -14,7 +14,7 @@ public class CSMajor extends Adventurer{
   }
 
   public CSMajor(String name, int hp){
-    this(name,hp,"C#");
+    this(name,hp,"Java");
   }
 
   public CSMajor(String name){
