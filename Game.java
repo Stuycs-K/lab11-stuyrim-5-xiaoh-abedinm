@@ -343,16 +343,16 @@ public class Game{
             validInput = true;
           }
           else if(input.startsWith("su ") || input.startsWith("support ")){
-            String[] temp = input.split(" ");
-            int num = Integer.valueOf(temp[1])-1;
-            Adventurer target = party.get(num);
-            Adventurer attacker = party.get(whichPlayer);
             String result = "";
-            if (target == attacker){
-              result = attacker.support();
+            String[] temp = input.split(" ");
+            if (temp.length > 1){
+              int num = Integer.valueOf(temp[1])-1;
+              Adventurer target = party.get(num);
+              Adventurer attacker = party.get(whichPlayer);
+              result = attacker.support(target);
             }
             else{
-              result = attacker.support(target);
+              result = (party.get(whichPlayer)).support();
             }
             addTurnMessage(result);
             TextBox(6, 2, 77,  3, result);

@@ -68,10 +68,11 @@ public class ArtMajor extends Adventurer{
       if(getSpecial() >= 8){
         setSpecial(getSpecial()-8);
         int damage = (int)(Math.random()*5+Math.random()*4)+3;
+        int total = getBuff() + damage;
         other.applyDamage(damage+getBuff());
         String buff = "";
         if(getBuff() > 0){
-        buff = "With a +" + getBuff() + " damage buff from a teammate, a total damage of " + (damage + getBuff()) + " is done.";
+        buff = " thanks to a +" + getBuff() + " damage buff from a teammate.";
         }
         this.setBuff(0);
         return this + " throws an extra large bucket of paint at "+ other + 
