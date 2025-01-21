@@ -72,7 +72,7 @@ public class Boss extends Adventurer{
       this.setSkip(false);
       return this + " is currently stunned and cannot perform any actions.";
     }
-    int heal = (int)(Math.random()*6)+2;
+    int heal = (int)(Math.random()*7)+5;
     this.setHP(this.getHP() + heal);
     return this + " degrades another and increases self esteem (hp) by "+ heal +
     " points. ";
